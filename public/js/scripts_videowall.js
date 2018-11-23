@@ -94,7 +94,7 @@ function loadData(callback) {
             	    					<span class="autor-name text-left">
             	    						<a href="#">
             	    							<h4 class="card-title">`+tweet.author.name+`</h4>
-            	    							<h6 class="card-subtitle mb-2">@`+tweet.author.username+`</h6>
+            	    							<!--h6 class="card-subtitle mb-2">@`+tweet.author.username+`</h6-->
             	    						</a>
             	    					</span>
                                     </div>
