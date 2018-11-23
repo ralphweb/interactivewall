@@ -53,7 +53,7 @@ function startEvents() {
 	clearInterval(intervalCount);
 	intervalCount = setInterval(function() {
 		getCount(topic);
-	},5000);
+	},10000);
 
     $(".toggle input[type='checkbox']").unbind("change");
     $(".toggle input[type='checkbox']").change(function() {
