@@ -286,6 +286,7 @@ function initRRSSEvents() {
 
     $(".boton-aprobar-tweet").unbind("click");
     $(".boton-aprobar-tweet").click(function() {
+        console.log("APROBAR");
         var $obj = $(this);
         var idToApprove = $obj.closest(".tweet-entrante").attr("data-tweet-id");
         $.ajax({
@@ -353,7 +354,7 @@ function initRRSSEvents() {
     $(".anterior-btn").click(function() {
         $(".loader").show();
         $(".entrantes .contenedor-tweets").empty();
-        pageEntrantes = pageEntrantes-1>=0?pageEntrantes-1:0;
+        pageEntrantes = pageEntrantes-2>=0?pageEntrantes-1:0;
         loadTweets();
     });
 
@@ -374,7 +375,7 @@ function initRRSSEvents() {
             //RESET
             loadTweets();
         } else {
-            $.get('/rrss/'+topic+'/get/mention/'+searchString,{},function(data) {
+            $.get('https://api.social-hound.com/'+topic+'/search/'+searchString,{},function(data) {
                 var i=0;
                 data.forEach(function(tweet) {
                     if($(".entrantes .contenedor-tweets").find("[data-tweet-id='"+tweet._id+"']").length==0) {
