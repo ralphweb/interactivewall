@@ -131,7 +131,7 @@ function loadInbox() {
                                             </div>
                                             <div class="columna fecha-ubicacion">
                                                 <div class="nombre-usuario">
-                                                    <h3>@`+tweet.author.name+`</h3>
+                                                    <h3>`+tweet.author.name+`</h3>
                                                 </div>
                                                 <div class="fecha">
                                                     <p><i class="icono-calendario"></i> `+tweet.captured_at+`</p>
@@ -388,7 +388,7 @@ function initRRSSEvents() {
                                                     </div>
                                                     <div class="columna fecha-ubicacion">
                                                         <div class="nombre-usuario">
-                                                            <h3>@`+tweet.author.name+`</h3>
+                                                            <h3>`+tweet.author.name+`</h3>
                                                         </div>
                                                         <div class="fecha">
                                                             <p><i class="icono-calendario"></i> `+tweet.captured_at+`</p>
