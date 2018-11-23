@@ -1,0 +1,334 @@
+/*
+* CSS AN TRÁNSITO: METRO
+* Por Iván Hermosilla Araya
+* Última actualización: 22/01/2018
+*/
+
+
+/* Contenidos
+–––––––––––––––––––––
+- 01. 
+- 02. 
+- 03. 
+- 04. 
+- 05. 
+- 06. 
+- 07. 
+*/
+
+
+
+/* 07. Mobile First Media Queries
+–––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––– */
+/* +++ desktop XL */
+@media (min-width: 1501px) and (max-width: 1700px) {
+.boton-eliminar-tweet {
+    width: 32%;
+}
+.antransito-twitter.aprobados .columna.foto {
+    width: 13%;
+}
+} /*cierre*/
+
+/* +++ desktop XL */
+@media (min-width: 1361px) and (max-width: 1500px) {
+.boton-eliminar-tweet {
+    width: 36%;
+}
+.antransito-twitter.aprobados .columna.foto {
+    width: 15%;
+}
+.columna.foto {
+    width: 16%;
+}
+} /*cierre*/
+
+/* +++ desktop XL */
+@media (min-width: 1201px) and (max-width: 1360px) {
+.boton-eliminar-tweet {
+    width: 40%;
+}
+.antransito-twitter.aprobados .columna.foto {
+    width: 16%;
+}
+.columna.foto {
+    width: 18%;
+}
+} /*cierre*/
+
+/* +++ desktop */
+@media (min-width: 980px) and (max-width: 1200px){
+.contenedor .fila.twitter {
+    padding: 20px;
+}
+.boton-eliminar-tweet {
+    width: 42%;
+    padding-left: 7px;
+}
+.antransito-twitter.aprobados .columna.foto {
+    width: 20%;
+}
+.columna.foto {
+    width: 25%;
+}
+a.aprobar-tweet {
+    padding: 7px 10px 7px 10px;   
+}
+.fecha-ubicacion .fecha p {
+    font-size: 0.6em;
+}
+.fecha-ubicacion .ubicacion p {
+    font-size: 0.8em;
+    line-height: 1.2em; 
+}
+.nombre-usuario h3 {
+    font-size: 1em;
+    margin-bottom: 4px;
+    padding-top: 2px;     
+}
+.foto-usuario-twitter {
+    width: 36px;
+    height: 36px;
+}
+.contenedor-tweets .tweet .botones a, .boton-eliminar-tweet {
+    font-size: 0.6em;    
+}
+.antransito-twitter.aprobados .contenedor-tweets .tweet .botones {
+    top: 0px;
+    right: 0px;
+}
+.contenedor-tweets .tweet .botones a {
+    line-height: 3.5; 
+}
+
+} /*cierre*/
+
+/* +++ tablets */
+@media (min-width: 768px) and (max-width: 979px){
+.fila.inbox {
+    flex-direction: column;    
+}
+.columna.antransito-twitter.aprobados {
+    width: 50%;
+}
+.contenedor .fila.twitter {
+    padding: 20px;
+}
+.boton-eliminar-tweet {
+    width: 42%;
+    padding-left: 7px;
+}
+.antransito-twitter.aprobados .columna.foto {
+    width: 20%;
+}
+.columna.foto {
+    width: 25%;
+}
+a.aprobar-tweet {
+    padding: 7px 10px 7px 10px;   
+}
+.fecha-ubicacion .fecha p {
+    font-size: 0.6em;
+}
+.fecha-ubicacion .ubicacion p {
+    font-size: 0.8em;
+    line-height: 1.2em; 
+}
+.nombre-usuario h3 {
+    font-size: 1em;
+    margin-bottom: 4px;
+    padding-top: 2px;     
+}
+.foto-usuario-twitter {
+    width: 36px;
+    height: 36px;
+}
+.contenedor-tweets .tweet .botones a, .boton-eliminar-tweet {
+    font-size: 0.6em;    
+}
+.antransito-twitter.aprobados .contenedor-tweets .tweet .botones {
+    top: 0px;
+    right: 0px;
+}
+.contenedor-tweets .tweet .botones a {
+    line-height: 3.5; 
+}
+.fila.twitter .columna {
+    margin: 5px;
+}
+.fila.inbox {
+        margin: 0px
+}
+} /*cierre*/
+
+/* +++ phablets */
+@media (min-width: 481px) and (max-width: 767px){
+.contenedor .fila.twitter {
+    padding: 10px;
+    flex-direction: column;
+}
+.fila.inbox {
+    flex-direction: column;    
+}
+.fila.cabecera img {
+    width: 100%;
+}
+.columna.antransito-twitter.entrantes {
+    width: 100%;
+    margin-bottom: 20px !important;
+}
+.fila.twitter .columna {
+    margin: 0px;
+}
+.columna.antransito-twitter.aprobados {
+    width: 100%;
+}
+.contenedor .fila.titulo h1 {
+    font-size: 2em;     
+}
+.contenedor .fila.twitter {
+    padding: 20px;
+}
+.boton-eliminar-tweet {
+    width: 30%;
+    padding-left: 7px;
+}
+.antransito-twitter.aprobados .columna.foto {
+    width: 20%;
+}
+.columna.foto {
+    width: 25%;
+}
+a.aprobar-tweet {
+    padding: 7px 10px 7px 10px;   
+}
+.fecha-ubicacion .fecha p {
+    font-size: 0.6em;
+}
+.fecha-ubicacion .ubicacion p {
+    font-size: 0.8em;
+    line-height: 1.2em; 
+}
+.nombre-usuario h3 {
+    font-size: 1em;
+    margin-bottom: 4px;
+    padding-top: 2px;     
+}
+.foto-usuario-twitter {
+    width: 36px;
+    height: 36px;
+}
+.contenedor-tweets .tweet .botones a, .boton-eliminar-tweet {
+    font-size: 0.6em;    
+}
+.antransito-twitter.aprobados .contenedor-tweets .tweet .botones {
+    top: 0px;
+    right: 0px;
+}
+.contenedor-tweets .tweet .botones a {
+    line-height: 3.5; 
+}    
+    
+} /*cierre*/
+
+/* +++ móviles */
+@media (min-width: 320px) and (max-width: 480px) {
+.contenedor.twitter-disponibles {
+    padding: 0px 10px;
+}
+.contenedor .fila.twitter {
+    padding: 10px;
+    flex-direction: column;
+}
+.fila.inbox {
+    flex-direction: column;    
+}
+.fila.cabecera {
+    padding: 10px;
+}
+.fila.cabecera img {
+    width: 100%;
+}
+.columna.antransito-twitter.entrantes {
+    width: 100%;
+    margin-bottom: 20px !important;
+}
+.fila.twitter .columna {
+    margin: 0px;
+}
+.columna.antransito-twitter.aprobados {
+    width: 100%;
+}
+.contenedor .fila.titulo h1 {
+    font-size: 2em;     
+}
+.boton-eliminar-tweet {
+    width: 36%;
+    padding-left: 7px;
+}
+.antransito-twitter.aprobados .columna.foto {
+    width: 20%;
+}
+.columna.foto {
+    width: 25%;
+}
+a.aprobar-tweet {
+    padding: 7px 10px 7px 10px;   
+}
+.fecha-ubicacion .fecha p {
+    font-size: 0.6em;
+}
+.fecha-ubicacion .ubicacion p {
+    font-size: 0.8em;
+    line-height: 1.2em; 
+}
+.nombre-usuario h3 {
+    font-size: 1em;
+    margin-bottom: 4px;
+    padding-top: 2px;     
+}
+.foto-usuario-twitter {
+    width: 36px;
+    height: 36px;
+}
+.contenedor-tweets .tweet .botones a, .boton-eliminar-tweet {
+    font-size: 0.6em;    
+}
+.antransito-twitter.aprobados .contenedor-tweets .tweet .botones {
+    top: 0px;
+    right: 0px;
+}
+.contenedor-tweets .tweet .botones a {
+    line-height: 3.5; 
+}   
+.contenedor-tweets {
+    padding: 10px;  
+}
+
+} /*cierre*/
+
+
+
+
+
+
+@media (max-width: 400px){
+
+} /*cierre*/
+
+@media (min-width: 401px) and (max-width: 500px) {
+
+} /*cierre*/
+
+@media (min-width: 501px) and (max-width: 600px) {
+
+} /*cierre*/
+
+@media (min-width: 601px) and (max-width: 700px) {
+
+} /*cierre*/
+
+@media (min-width: 701px) and (max-width: 760px) {
+    
+} /*cierre*/
+

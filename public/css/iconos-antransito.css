@@ -1,0 +1,94 @@
+@font-face {
+  font-family: 'iconos-antransito';
+  src: url('../fonts/iconos-antransito.eot?20180209');
+  src: url('../fonts/iconos-antransito.eot?20180209#iefix') format('embedded-opentype'),
+       url('../fonts/iconos-antransito.woff2?20180209') format('woff2'),
+       url('../fonts/iconos-antransito.woff?20180209') format('woff'),
+       url('../fonts/iconos-antransito.ttf?20180209') format('truetype'),
+       url('../fonts/iconos-antransito.svg?20180209#iconos-antransito') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+/* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
+/* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
+/*
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: 'fontello';
+    src: url('../font/fontello.svg?42745170#fontello') format('svg');
+  }
+}
+*/
+ 
+ [class^="icono-"]:before, [class*=" icono-"]:before {
+  font-family: "iconos-antransito";
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+ 
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  margin-right: .2em;
+  text-align: center;
+  /* opacity: .8; */
+ 
+  /* For safety - reset parent styles, that can break glyph codes*/
+  font-variant: normal;
+  text-transform: none;
+ 
+  /* fix buttons height, for twitter bootstrap */
+  /*line-height: 1em;*/
+ 
+  /* Animation center compensation - margins should be symmetric */
+  /* remove if not needed */
+  margin-left: .2em;
+ 
+  /* you can be more comfortable with increased icons size */
+  /* font-size: 120%; */
+ 
+  /* Font smoothing. That was taken from TWBS */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+ 
+  /* Uncomment for 3D effect */
+  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
+}
+ 
+.icono-aprobado:before { content: '\e800'; } /* '' */
+.icono-cerrar:before { content: '\e801'; } /* '' */
+.icono-abajo:before { content: '\e802'; } /* '' */
+.icono-arriba:before { content: '\e803'; } /* '' */
+.icono-derecha:before { content: '\e804'; } /* '' */
+.icono-izquierda:before { content: '\e805'; } /* '' */
+.icono-auto:before { content: '\e806'; } /* '' */
+.icono-bus:before { content: '\e807'; } /* '' */
+.icono-metro:before { content: '\e808'; } /* '' */
+.icono-editar:before { content: '\e809'; } /* '' */
+.icono-reloj:before { content: '\e80a'; } /* '' */
+.icono-indicador:before { content: '\e80b'; } /* '' */
+.icono-lupa:before { content: '\e80c'; } /* '' */
+.icono-menu:before { content: '\e80d'; } /* '' */
+.icono-recargar:before { content: '\e80e'; } /* '' */
+.icono-mas:before { content: '\e80f'; } /* '' */
+.icono-twitter:before { content: '\e810'; } /* '' */
+.icono-facebook:before { content: '\e811'; } /* '' */
+.icono-logometro:before { content: '\e812'; } /* '' */
+.icono-geolocalizador:before { content: '\e813'; } /* '' */
+.icono-calendario:before { content: '\e814'; } /* '' */
+.icono-tweet-aprobado:before { content: '\e815'; } /* '' */
+.icono-tweet-entrante:before { content: '\e816'; } /* '' */
+.icono-info:before { content: '\e817'; } /* '' */
+.icono-evento-falla-mecanica:before { content: '\e818'; } /* '' */
+.icono-evento-inundacion:before { content: '\e819'; } /* '' */
+.icono-evento-desastre-natural:before { content: '\e81a'; } /* '' */
+.icono-evento-falla-electrica:before { content: '\e81b'; } /* '' */
+.icono-evento-estacion-cerrada:before { content: '\e81c'; } /* '' */
+.icono-evento-servicio-restablecido:before { content: '\e81d'; } /* ''*/
+.icono-evento-disturbios:before { content: '\e81e'; } /* '' */
+.icono-evento-objeto-sospechoso:before { content: '\e81f'; } /* '' */
+.icono-evento-alerta-generica:before { content: '\e820'; } /* '' */
+.icono-video:before { content: '\e821'; } /* '' */
+.icono-foto:before { content: '\e822'; } /* '' */
+.icono-gif:before { content: '\e825'; } /* '' */
+.icono-carousel-image:before { content: '\e826'; } /* '' */

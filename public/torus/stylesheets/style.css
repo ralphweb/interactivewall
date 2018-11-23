@@ -1,0 +1,449 @@
+@font-face {
+  font-family: 'Gilroy-Black';
+  src:  url('../fonts/Gilroy-Black.woff') format('woff'),
+  		url('../fonts/Gilroy-Black.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Gilroy-Bold';
+  src:  url('../fonts/Gilroy-Bold.woff') format('woff'),
+  		url('../fonts/Gilroy-Bold.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Gilroy-ExtraBold';
+  src:  url('../fonts/Gilroy-ExtraBold.woff') format('woff'),
+  		url('../fonts/Gilroy-ExtraBold.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Gilroy-Heavy';
+  src:  url('../fonts/Gilroy-Heavy.woff') format('woff'),
+  		url('../fonts/Gilroy-Heavy.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Gilroy-Light';
+  src:  url('../fonts/Gilroy-Light.woff') format('woff'),
+  		url('../fonts/Gilroy-Light.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Gilroy-Medium';
+  src:  url('../fonts/Gilroy-Medium.woff') format('woff'),
+  		url('../fonts/Gilroy-Medium.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Gilroy-Regular';
+  src:  url('../fonts/Gilroy-Regular.woff') format('woff'),
+  		url('../fonts/Gilroy-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Gilroy-SemiBold';
+  src:  url('../fonts/Gilroy-SemiBold.woff') format('woff'),
+  		url('../fonts/Gilroy-SemiBold.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Gilroy-Thin';
+  src:  url('../fonts/Gilroy-Thin.woff') format('woff'),
+  		url('../fonts/Gilroy-Thin.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Gilroy-UltraLight';
+  src:  url('../fonts/Gilroy-UltraLight.woff') format('woff'),
+  		url('../fonts/Gilroy-UltraLight.ttf') format('truetype');
+}
+
+/* GENERAL */
+:root
+{
+	--warning-color: #ef4c4c;
+	--success-color: #4cefcb;
+}
+
+body {
+  padding: 50px;
+  font-family: 'Gilroy-Regular', sans-serif;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  position: relative;
+  background-color: #322d37;
+}
+.copyright
+{
+	position: fixed;
+	bottom: 5vh;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+	z-index: 4;
+	width: 50vw;
+	text-align: center;
+	font-family: 'Gilroy-Heavy', sans-serif;
+	font-size: 16pt;
+	color: rgba(255,255,255,0.26);
+}
+.copyright img
+{
+	width: 17vh;
+	margin-bottom: -0.5vh;
+}
+.btn
+{
+	cursor: pointer;
+}
+
+
+/* GENERAL */
+
+.rrss
+{
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-image: url(../images/bkg01.png);
+	background-size: cover;
+	background-position: center center;
+	width: 100vw;
+	height: 100vh;
+}
+
+.rrss .glow-back
+{
+	width: 90vw;
+	height: 70vh;
+	top: 20vh; 
+	position: absolute;
+	right: 0;
+	background-color: rgba(29,25,33,0.82);
+	z-index: 1;
+}
+.rrss .dotted-line
+{
+	position: absolute;
+	right: 0;
+	width: 90vw;
+	height: 2vh;
+	background-image: linear-gradient(to right, rgba(255, 255, 255, 1) 10%, rgba(255, 255, 255, 0) 0%);
+	background-size: 10px 1px;
+	background-repeat: repeat-x;
+	z-index: 2;
+	opacity: 0.6;
+}
+.rrss .dotted-line.top
+{
+	top: 20vh;
+	background-position: top;
+
+}
+.rrss .dotted-line.bottom
+{
+	bottom: 10vh;
+	background-position: bottom;
+
+}
+.rrss .menu
+{
+	width: 10vw;
+	height: 100vh;
+	position: absolute;
+	left: 0;
+	top: 0;
+	background-color: rgba(255,83,83,0.8);
+}
+.rrss .logo
+{
+	width: 15vw;
+	height: 8vh;
+	background-image: url(../images/toruslogo.png);
+	background-size: contain;
+	background-position: center center;
+	background-repeat: no-repeat;
+	position: fixed;
+	left: 15vw;
+	top: 5vh;
+	z-index: 999;
+}
+/** CONTENT **/
+.rrss .glow
+{
+	width: 90vw;
+	height: 100vh;
+	top: 0vh; 
+	position: absolute;
+	right: 0;
+	background-color: rgba(40,34,46,0.75);
+	z-index: 1;
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-flow: row nowrap;
+	justify-content: space-around;
+	align-items: center;
+}
+.rrss .glow .column
+{
+	width: 35vw;
+	height: 70vh;
+	margin-top: 10vh;
+	border-left: 3px solid #433f48;
+	border-right: 3px solid #433f48;
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-flow: row wrap;
+	justify-content: center;
+	align-items: flex-start;
+}
+.rrss .glow .column h1
+{
+	color: white;
+	font-family: 'Gilroy-Thin', sans-serif;
+	text-align: center;
+	margin-bottom: 0;
+}
+.rrss .glow .column h1 strong
+{
+	font-family: 'Gilroy-Bold', sans-serif;
+	margin-left: 7px;
+}
+/**** TOOLBAR ****/
+.rrss .glow .column .toolbar
+{
+	width: 100%;
+	height: auto;
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-flow: row nowrap;
+	justify-content: space-around;
+	align-items: center;
+	margin-bottom: 3vh;
+}
+.rrss .glow .column .toolbar input[type='text']
+{
+	height: 2vh;
+	width: 15vw;
+	border-radius: 2vh;
+	border:none;
+	margin-top: 2px;
+}
+.rrss .glow .column .toolbar .btn
+{
+	height: 2vh;
+	border-radius: 2vh;
+	font-family: 'Gilroy-Medium', sans-serif;
+    font-size: 8pt;
+	border: 1px solid rgba(255,255,255,0.6);
+	color: white;
+	background-color: var(--warning-color);
+	line-height: 2vh;
+	display: inline-block;
+	text-decoration: none;
+	padding: 0px 15px;
+	margin-top: 0;
+}
+/* The switch - the box around the slider */
+.rrss .glow .column .toolbar .switch {
+  position: relative;
+  display: inline-block;
+  width: 3vw;
+  height: 2.3vh;
+}
+
+/* Hide default HTML checkbox */
+.rrss .glow .column .toolbar .switch input {display:none;}
+
+/* The slider */
+.rrss .glow .column .toolbar .slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: transparent;
+  border:1px solid #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+  display: none;
+}
+
+.rrss .glow .column .toolbar .slider:before {
+  position: absolute;
+  content: "";
+  height: 2.3vh;
+  width: 2.3vh;
+  left: 0vw;
+  bottom: 0vh;
+  top: -0.1vh;
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+.rrss .glow .column .toolbar .facebook .slider:before
+{
+	background-image: url(../images/facebook_logo.png);
+}
+.rrss .glow .column .toolbar .twitter .slider:before
+{
+	background-image: url(../images/twitter_logo.png);
+}
+
+.rrss .glow .column .toolbar input:checked + .slider {
+  background-color: var(--warning-color);
+}
+
+.rrss .glow .column .toolbar input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+.rrss .glow .column .toolbar input:checked + .slider:before {
+  -webkit-transform: translateX(1.5vw);
+  -ms-transform: translateX(1.5vw);
+  transform: translateX(1.5vw);
+}
+
+/* Rounded sliders */
+.rrss .glow .column .toolbar .slider.round {
+  border-radius: 2vh;
+}
+
+.rrss .glow .column .toolbar .slider.round:before {
+  border-radius: 50%;
+}
+
+/**** MENTIONS *****/
+.rrss .glow .column .mentions
+{
+	height: 58vh;
+	overflow-x: hidden;
+	overflow-y: auto;
+	align-self: flex-end;
+}
+.rrss .glow .column .mentions .mention
+{
+	background-color: rgba(255,255,255,0.23);
+	height: auto;
+	overflow-y: auto;
+	margin-bottom: 1.5vh;
+}
+.rrss .glow .column .mentions .mention .col.left
+{
+	padding-top: 1vh;
+	width: 5vw;
+	height: 13vh;
+	margin-left: 2vw;
+	text-align: center;
+	float: left;
+}
+.rrss .glow .column .mentions .mention .col.left .profile-pic
+{
+	background-size: cover;
+	background-position: center center;
+	width: 5vw;
+	height: 5vw;
+	border-radius: 5vw;
+}
+.rrss .glow .column .mentions .mention .col.right
+{
+	padding-left: 1vw;
+	padding-right: 2vw;
+	text-align: left;
+	padding-top: 1vh;
+	padding-bottom: 1vh;
+	height: auto;
+	position: relative;
+	float: left;
+	width: 25vw;
+}
+.rrss .glow .column .mentions .mention .col.right .social-network
+{
+	position: absolute;
+    top: 1vh;
+    right: 2vw;
+}
+.rrss .glow .column .mentions .mention .col.right .fullname
+{
+    font-family: 'Gilroy-Regular', sans-serif;
+    font-size: 13pt;
+    color: white;
+    margin-top: 0.5vh;
+    margin-bottom: 0vh;
+}
+.rrss .glow .column .mentions .mention .col.right h3
+{
+    font-family: 'Gilroy-Regular', sans-serif;
+    font-size: 11pt;
+    color: white;
+    margin-top: 0vh;
+    margin-bottom: 0vh;
+}
+.rrss .glow .column .mentions .mention .col.right .date
+{
+    font-family: 'Gilroy-Thin', sans-serif;
+    font-size: 10pt;
+    color: #89848b;
+    margin-top: 0vh;
+    margin-bottom: 0.5vh;
+}
+.rrss .glow .column .mentions .mention .col.right .message
+{
+    font-family: 'Gilroy-Light', sans-serif;
+    font-size: 10pt;
+    color: white;
+    margin-top: 0vh;
+    margin-bottom: 0vh;
+}
+.rrss .glow .column .mentions .mention .options
+{
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-flow: row nowrap;
+	justify-content: space-between;
+	align-items: center;
+	flex-grow: 2;
+    width: 100%;
+    padding: 0.5vh 0;
+    height: auto;
+    float: left;
+    clear: both;
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.5) 10%, rgba(255, 255, 255, 0) 0%);
+	background-size: 10px 1px;
+	background-repeat: repeat-x;
+}
+.rrss .glow .column .mentions .mention .options .btn
+{
+	margin: 1vh 2vw;
+	font-family: 'Gilroy-Medium', sans-serif;
+    font-size: 8pt;
+	border: 1px solid rgba(255,255,255,0.6);
+	padding: 0px 15px;
+	height: 3vh;
+	border-radius: 3vh;
+	line-height: 3vh;
+	vertical-align: middle;
+}
+.rrss .glow .column .mentions .mention .options .btn.delete
+{
+	background-color: var(--warning-color);
+	color: white;
+}
+.rrss .glow .column .mentions .mention .options .btn.approve
+{
+	background-color: var(--success-color);
+	color: #504c4c;
+}
+.rrss .glow .column.aprobados .mentions .mention .options .btn.approve
+{
+	opacity: 0;
+	pointer-events: none;
+}

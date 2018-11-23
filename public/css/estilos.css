@@ -1,0 +1,875 @@
+/*
+* AN TRANSITO: CSS BASE
+* ivan.hermosilla@mega.cl
+* Update: 6/02/2018
+*/
+
+/*
+- 00. Tipografías
+- 01. Estilos predefinidos
+- 02. Contenedor de botonera touch
+- 03. Header
+- 04. 
+- 05. 
+- 06. 
+*/
+
+/* 00. Tipografías
+-------------------------------------------------------*/
+@font-face {
+  font-family: 'Uni-Sans-Regular';
+    src: url('../fonts/unisansregular-webfont.eot');
+    src: url('../fonts/unisansregular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/unisansregular-webfont.woff') format('woff'),
+         url('../fonts/unisansregular-webfont.ttf') format('truetype'),
+         url('../fonts/unisansregular-webfont.svg#uni_sans_regularregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Uni-Sans-Regular-Italic';
+    src: url('../fonts/unisansregularitalic-webfont.eot');
+    src: url('../fonts/unisansregularitalic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/unisansregularitalic-webfont.woff') format('woff'),
+         url('../fonts/unisansregularitalic-webfont.ttf') format('truetype'),
+         url('../fonts/unisansregularitalic-webfont.svg#uni_sans_regular_italicitalic') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Uni-Sans-Book';
+    src: url('../fonts/unisansbook-webfont.eot');
+    src: url('../fonts/unisansbook-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/unisansbook-webfont.woff') format('woff'),
+         url('../fonts/unisansbook-webfont.ttf') format('truetype'),
+         url('../fonts/unisansbook-webfont.svg#uni_sans_bookregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Uni-Sans-Book-Italic';
+    src: url('../fonts/unisansbookitalic-webfont.eot');
+    src: url('../fonts/unisansbookitalic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/unisansbookitalic-webfont.woff') format('woff'),
+         url('../fonts/unisansbookitalic-webfont.ttf') format('truetype'),
+         url('../fonts/unisansbookitalic-webfont.svg#uni_sans_book_italicitalic') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Uni-Sans-SemiBold';
+    src: url('../fonts/unisanssemibold-webfont.eot');
+    src: url('../fonts/unisanssemibold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/unisanssemibold-webfont.woff') format('woff'),
+         url('../fonts/unisanssemibold-webfont.ttf') format('truetype'),
+         url('../fonts/unisanssemibold-webfont.svg#uni_sans_semiboldregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Uni-Sans-SemiBold-Italic';
+    src: url('../fonts/unisanssemibolditalic-webfont.eot');
+    src: url('../fonts/unisanssemibolditalic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/unisanssemibolditalic-webfont.woff') format('woff'),
+         url('../fonts/unisanssemibolditalic-webfont.ttf') format('truetype'),
+         url('../fonts/unisanssemibolditalic-webfont.svg#uni_sans_semibold_italicIt') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Uni-Sans-Bold';
+    src: url('../fonts/unisansbold-webfont.eot');
+    src: url('../fonts/unisansbold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/unisansbold-webfont.woff') format('woff'),
+         url('../fonts/unisansbold-webfont.ttf') format('truetype'),
+         url('../fonts/unisansbold-webfont.svg#uni_sans_boldregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Uni-Sans-Bold-Italic';
+    src: url('../fonts/unisansbolditalic-webfont.eot');
+    src: url('../fonts/unisansbolditalic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/unisansbolditalic-webfont.woff') format('woff'),
+         url('../fonts/unisansbolditalic-webfont.ttf') format('truetype'),
+         url('../fonts/unisansbolditalic-webfont.svg#uni_sans_bold_italicitalic') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* 01. Estilos predefinidos
+-------------------------------------------------------*/
+
+html, body, .container-fluid {
+    height: 100%;
+    margin: 0;
+    font-family: 'Uni-Sans-Regular';
+    overflow: hidden;
+    background: #534c75 !important;
+}
+.info {
+    padding: 6px 8px;
+    font: 14px/16px Arial, Helvetica, sans-serif;
+    background: white;
+    background: rgba(255,255,255,0.8);
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    border-radius: 5px;
+} 
+.info h4 {
+    margin: 0 0 5px;
+    color: #777;
+}
+.legend {
+    line-height: 18px;
+    color: #555;
+}
+.legend i {
+    width: 18px;
+    height: 18px;
+    float: left;
+    margin-right: 8px;
+    opacity: 0.8;
+}
+/* bubble color */
+.red .leaflet-popup-content-wrapper, .red .leaflet-popup-tip {
+    background-color: #FF3332;
+    color: white;
+}
+.orange .leaflet-popup-content-wrapper, .orange .leaflet-popup-tip {
+    background-color: #FFA632;
+    color: white;
+}
+.yellow .leaflet-popup-content-wrapper, .yellow .leaflet-popup-tip {
+    background-color: #FFF732;
+    color: white;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+.green .leaflet-popup-content-wrapper, .green .leaflet-popup-tip {
+    background-color: #47FF32;
+    color: white;
+}
+.darkGreen .leaflet-popup-content-wrapper, .darkGreen .leaflet-popup-tip {
+    background-color: #3DA032;
+    color: white;
+}
+.blue .leaflet-popup-content-wrapper, .blue .leaflet-popup-tip {
+    background-color: #4D5BF3;
+    color: white;
+}
+.leaflet-left {
+    display: none !important;
+}
+
+/* 02. Contenedor de botonera touch
+-------------------------------------------------------*/
+#mapid {
+    height: 100%;
+    width: 100%;
+}
+
+/* 03. Header
+-------------------------------------------------------*/
+header {
+    height: 150px;
+    background: -moz-linear-gradient(top, rgba(21,12,57,0.65) 0%, rgba(255,255,255,0) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba(21,12,57,0.65) 0%,rgba(255,255,255,0) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(21,12,57,0.65) 0%,rgba(255,255,255,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#150c39', endColorstr='#00ffffff',GradientType=0 ); /* IE6-9 */
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 999999;
+    font-family: 'Uni-Sans-Bold';
+}
+/*logo*/
+header .logo {
+    float: right;
+    display: block;
+    width: 40%;
+    padding: 20px 50px;
+    text-align: right;
+}
+header .alertas-metro {
+    float: left;
+    display: block;
+    width: 40%;
+    text-align: left;
+    padding: 20px 50px;
+}
+header .logo img {
+    width: 350px;
+}
+/*alertas metro*/
+header .alertas-metro a {
+    color: #fff;
+    text-decoration: none;
+    width: 70px;
+    float: left;
+    margin: 5px 10px;
+    position: relative;
+    cursor: pointer;
+}
+.linea1, linea2, linea4, linea4A, linea5, linea6 {
+    width: 70px;
+    float: right;
+    display: block;
+}
+header .circulo-metro {
+    width: 70px;
+    height: 70px;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    background: rgba(43, 34, 74, 0.75);
+    float: right;
+    color: #fff;
+}
+header .circulo-metro p {
+    text-align: center;
+    font-size: 1.4em;
+    margin: 0;
+    line-height: 3;
+}
+header .alertas {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+header .alertas p {
+    text-align: center;
+    margin: 0;
+    font-family: 'Uni-Sans-Regular';
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    background: rgba(43, 34, 74, 0.75);
+    background: #f30f4a;
+    width: 24px;
+    height: 24px;
+    line-height: 1.5;
+}
+/*colores de lineas*/
+.linea1 .circulo-metro {
+    border: 4px solid #CD0D4D;
+}
+.linea2 .circulo-metro {
+    border: 4px solid #FFC400;
+}
+.linea4 .circulo-metro {
+    border: 4px solid #444793;
+}
+.linea4A .circulo-metro {
+    border: 4px solid #40C4F6;
+}
+.linea5 .circulo-metro {
+    border: 4px solid #40865D;
+}
+.linea6 .circulo-metro {
+    border: 4px solid #9D59B1;
+}
+
+/* 04. Twitter
+-------------------------------------------------------*/
+#twitter {
+    position: absolute;
+    left: -2px;
+    top: 47%;
+    width: 100%;
+    z-index: 99999999999;
+    width: 100px;
+    cursor: pointer;
+    transition: all 500ms ease-in-out;
+}
+#twitter p {
+    color: #fff;
+    font-size: 2.4em;
+    margin: 0;
+    background: rgba(43, 34, 74, 0.75);
+    padding: 30px 20px;
+    -webkit-border-radius: 0px 70px 70px 0px;
+    -moz-border-radius: 0px 70px 70px 0px;
+    -o-border-radius: 0px 70px 70px 0px;
+    border-radius: 0px 70px 70px 0px;
+    border: .5px solid #7d71ab;
+    border-right: 0px;
+    text-align: center;
+}
+
+/*Twitter display*/
+/*nav menu*/
+.mostrar {
+    right:0%;
+    opacity:1;
+}
+
+.oculto {
+    opacity:0;
+    right:100%;
+}
+.twitter-slider {
+    background:rgba(43, 34, 74, 0.9);
+    position:absolute;
+    top:0;
+    width:100%;
+    height:100%;
+    text-align:center;
+    transition: 0.3s;
+    /*  transition: opacity .5s ease;
+    -moz-transition: opacity .5s ease;
+    -webkit-transition: opacity .5s ease;
+    transition:left .5s ease-in-out;*/
+    z-index: 999999;
+}
+.twitter-slider .contenido-twitter{
+    position:relative;
+    top:50%;
+    transform: translateY(-50%);
+}
+
+.twitter-slider .contenido-twitter ul {
+    list-style:none;
+    padding: 0;
+}
+
+.twitter-slider h2 {
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 3em;
+    font-family: 'Uni-Sans-Bold';
+    margin-top: 170px;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+}
+
+/*capsula-twitter*/
+.capsula-tw {
+    width: 800px;
+    height: 450px;
+    margin: 0 auto;
+    background: -moz-linear-gradient(to bottom, rgba(3,169,244,0.7) 0%,rgba(3,169,244,0.1) 100%);
+    background: -webkit-linear-gradient(to bottom, rgba(3,169,244,0.7) 0%,rgba(3,169,244,0.1) 100%);
+    background: linear-gradient(to bottom, rgba(3,169,244,0.7) 0%,rgba(3,169,244,0.1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1affffff', endColorstr='#00ffffff',GradientType=0 );
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -o-border-radius: 20px;
+    border-radius: 20px;
+    border: 1px solid rgba(256,256,256,0.15);
+    border-bottom: 1px solid rgb(80, 71, 105);
+    padding: 40px;
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+    -o-opacity: 1;
+    opacity: 1;
+    -webkit-box-shadow: 20px 0px 22px rgba(40, 30, 53, 0.25);
+    -moz-box-shadow: 20px 0px 22px rgba(40, 30, 53, 0.25);
+    -o-box-shadow: 20px 0px 22px rgba(40, 30, 53, 0.25);
+    box-shadow: 20px 0px 22px rgba(40, 30, 53, 0.25);
+}
+.capsula-tw .top,  .capsula-tw .bottom {
+    display: inline-block;
+    margin-bottom: 30px;
+    width: 750px;
+}
+.contenedor-foto {
+    width: 100px;
+    float: left;
+    display: block;
+    margin-left: 0px;
+}
+
+.foto-tw {
+    width: 90px;
+    height: 90px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -o-border-radius: 6px;
+    border-radius: 6px;
+}
+.creditos-tw {
+    width: 450px;
+    text-align: left;
+    display: block;
+    float: left;
+}
+.creditos-tw .nombre-usuario h3 {
+    margin: 0;
+    font-size: 44px;
+    color: #fff;
+    font-family: 'Uni-Sans-SemiBold';
+}
+.creditos-tw .ubicacion p {
+    margin: 0;
+    color: #fff;
+    font-size: 24px;
+    font-family: 'Uni-Sans-Regular';
+}
+.comentario-tw {
+    background: -moz-linear-gradient(to bottom, rgba(47, 37, 77, 0.2) 0%,rgba(47, 37, 77, 0.2) 80%);
+    background: -webkit-linear-gradient(to bottom, rgba(47, 37, 77, 0.2) 0%,rgba(47, 37, 77, 0.2) 80%);
+    background: linear-gradient(to bottom, rgba(47, 37, 77, 0.2) 0%,rgba(47, 37, 77, 0.2) 80%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1affffff', endColorstr='#00ffffff',GradientType=0 );
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+    -o-opacity: 1;
+    opacity: 1;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -o-border-radius: 20px;
+    border-radius: 20px;
+    border: 0px solid rgba(256,256,256,0.25);
+    padding: 60px;
+    text-align: left;
+}
+.comentario-tw p {
+    font-family: 'Uni-Sans-Regular';
+    font-size: 30px;
+    line-height: 30px;
+    color: rgba(256,256,256,1);
+    margin: 0;
+}
+
+/*Botones media*/
+.botones-media {
+    float: right;
+    margin-top: 20px;
+    display: block;
+}
+.botones-media ul li {
+    display:inline;
+    padding-left:3px;
+    padding-right:3px;
+}
+.botones-media span.video, .botones-media span.foto, .botones-media span.gif, .botones-media span.carousel-image {
+    background-color: rgba(47, 38, 77,0.5);
+    color: #fff;
+    width: 50px;
+    height: 50px;
+    display: block;
+    line-height: 1.4;
+    border-radius: 50%;
+    font-size: 36px;
+    padding: 10px;
+    margin: 5px;
+    float: left;
+}
+.video-play {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(38, 29, 68,0.9);
+    color: #fff;
+    line-height: 4;
+    font-size: 100px;
+    z-index: 9999999;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -o-border-radius: 20px;
+    border-radius: 20px;
+}
+
+/*contenedor - foto*/
+.foto-tweet {
+    width: 800px;
+    height: 400px;
+    border-radius: 20px;
+    background: #ddd;
+}
+
+/*contenedor - video*/
+.video-tweet {
+    position: relative;
+    padding-bottom: 51.25%;
+    height: 0; 
+    overflow: hidden;
+    width: 100%;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -o-border-radius: 20px;
+    border-radius: 20px;
+}
+
+.video-tweet iframe,
+.video-tweet object,
+.video-tweet video,
+.video-tweet embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -o-border-radius: 20px;
+    border-radius: 20px;
+}
+.contenedor-foto-tweet, .contenedor-video-tweet {
+    position: relative;
+}
+
+span.cerrar-media {
+    background-color: rgb(210, 17, 86);
+    color: #ffffff;
+    width: 30px;
+    height: 30px;
+    display: block;
+    line-height: 1.4;
+    border-radius: 50%;
+    font-size: 20px;
+    padding: 10px;
+    margin: 5px;
+    float: left;
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    z-index: 99999999999;
+}
+
+/* 05. Slider
+-------------------------------------------------------*/
+.owl-carousel .owl-nav .owl-prev {
+    position: absolute;
+    top: 50%;
+    left: 25%;
+    color: #fff;
+    opacity: 0.05;
+    font-size: 4em;
+}
+.owl-carousel .owl-nav .owl-next {
+    position: absolute;
+    top: 50%;
+    right: 25%;
+    color: #fff;
+    opacity: 0.05;
+    font-size: 4em;
+}
+.owl-theme .owl-dots .owl-dot span {
+    width: 20px !important;
+    height: 20px !important;
+    background: rgba(256,256,256,0.1) !important;
+}
+.owl-theme .owl-dots .owl-dot.active span {
+    background: rgba(256,256,256,0.5) !important;
+}
+.owl-theme .owl-dots {
+    margin-top: 30px !important;
+}
+
+
+/* 06. Tooltip - Metro
+-------------------------------------------------------*/
+
+.tooltip {
+    left: -440px !important;
+    top: -304px !important;
+    -webkit-transform: scale(0.85);
+    -moz-transform: scale(0.85);
+    -o-transform: scale(0.85);
+    transform: scale(0.85);
+    position: absolute;
+    top:30%;
+    left: 20%;
+    z-index: 9999999;
+    width: 900px;
+    height: 300px;
+    display: block;
+    width: 900px;
+    height: 300px;
+    background: -moz-linear-gradient(to bottom, rgba(21,12,57,0.6) 25%,rgba(43,32,62,0.55) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(to bottom, rgba(21,12,57,0.6) 25%,rgba(43,32,62,0.55) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(21,12,57,0.6) 25%,rgba(43,32,62,0.55) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#150c39', endColorstr='#ba2b203e',GradientType=0 ); /* IE6-9 */
+    color:#fff;
+    border-radius: 20px;
+    text-align: center;
+    border: 1px solid #9385bb;
+}
+.right.info, .right.info .info {
+    background: transparent;
+    box-shadow: 0 0 15px rgba(0,0,0,0);
+}
+.toltip-metro {
+    width: 900px;
+    height: 300px;
+    display: block;
+    position: absolute;
+}
+/*icono de evento - left*/
+.left.evento {
+    width: 240px;
+    height: 240px;
+    display: block;
+    position: relative;
+    float: left;
+    background: #EC1C50;
+    border-radius: 20px 0px 0px 20px;
+    text-align: center;
+    padding: 30px;
+    top: 0;
+    left: 0;
+}
+.left.evento .icono-evento {
+    font-size: 120px;
+}
+.left.evento h2 {
+    margin: 0;
+    line-height: 34px;
+    padding-top: 0px;
+    font-size: 34px;
+    color: #fff;
+    font-family: 'Uni-Sans-Bold';
+    text-transform: uppercase;
+    width: 100%;
+}
+/* informacion de evento - right */
+.right.info {
+    width: 540px;
+    height: 240px;
+    display: block;
+    position: relative;
+    float: left;
+    text-align: center;
+    padding: 30px;
+    top: 0;
+    left: 0;
+}
+.right.info .metro-info {
+    width: 540px;
+    display: inline-block;
+    border-bottom: 4px dotted rgba(256,256,256,0.2);
+    padding-top: 10px;
+}
+.metro-info .contenedor-icono-metro {
+    width: 30px;
+    float: left;
+    padding: 0;
+    font-size: 22px;
+    line-height: 0.7;
+}
+.metro-info .info {
+    width: 460px;
+    float: left;
+    padding: 0px;
+    padding-left: 10px;
+    padding-top: 0px;
+}
+
+.metro-info .info h3 {
+    margin: 0;
+    font-size: 20px;
+    text-transform: uppercase;
+    font-family: 'Uni-Sans-Bold';
+    text-align: left;
+    margin-bottom: 10px;
+}
+.metro-info .info p {
+    margin-top: 0px;
+    font-size: 50px;
+    line-height: 46px;
+    text-transform: uppercase;
+    font-family: 'Uni-Sans-Bold';
+    text-align: left;
+}
+.mas-info {
+    text-align: left;
+    font-family: 'Uni-Sans-SemiBold';
+}
+.tiempo-retraso p {
+    font-size: 24px;
+    text-transform: uppercase;
+    opacity: 0.75;
+}
+.info-adicional.on {
+    display: block;
+    font-size: 24px;
+    text-transform: uppercase;
+    opacity: 0.75;
+}
+.info-adicional.off {
+    display: none;
+    opacity: 0;
+}
+.flecha-before-metro {
+    width:0px;
+    height:0px;
+    border-left: 40px solid transparent;  /* izquierda flecha */
+    border-right: 40px solid transparent; /* derecha flecha */
+    border-top: 40px solid rgba(140, 120, 199, 0.5); /* base flecha y color*/
+    font-size:0px;
+    line-height:0px;
+    bottom: -40px;
+    left: 450px;
+    position: absolute;
+    /*border: 1px solid #9385bb;*/
+}
+.flecha-after-metro {
+    width:0px;
+    height:0px;
+    border-left: 40px solid transparent;  /* izquierda flecha */
+    border-right: 40px solid transparent; /* derecha flecha */
+    border-top: 40px solid rgba(22, 17, 37, 0.5); /* base flecha y color*/
+    font-size:0px;
+    line-height:0px;
+    bottom: -39px;
+    left: 450px;
+    position: absolute;
+}
+
+/*colores por linea*/
+
+.tooltip.linea-1 .left {
+    background: #CD0D4D !important;
+}
+.tooltip.linea-2 .left {
+    background: #FFC400 !important;
+}
+.tooltip.linea-4 .left {
+    background: #444793 !important;
+}
+.tooltip.linea-4A .left {
+    background: #40C4F6 !important;
+}
+.tooltip.linea-5 .left {
+    background: #40865D !important;
+}
+.tooltip.linea-6 .left {
+    background: #9D59B1 !important;
+}
+
+.tooltip.linea-2 .left, .tooltip.linea-2 .left.evento h2 {
+    color: #2e2550 !important;
+}
+
+/* 07. Tooltip - Transantiago
+-------------------------------------------------------*/
+.tooltip-axis {
+    margin-left: 38px !important;
+    margin-top: 28px !important;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    font-size: 16px;
+    line-height: 1.4;
+    background-color: #7dc542;
+    color: #fff;
+    font-family: 'Uni-Sans-Bold';
+    border: 2px solid #fff;
+}
+.leaflet-tooltip-left:before {
+    -webkit-opacity: 0;
+    -moz-opacity: 0;
+    -o-opacity: 0;
+    opacity: 0;
+}
+.popup-wrapper {
+    left: -440px !important;
+    top: -304px !important;
+    -webkit-transform: scale(0.85);
+    -moz-transform: scale(0.85);
+    -o-transform: scale(0.85);
+    transform: scale(0.85);
+    position: absolute;
+    top:30%;
+    left: 20%;
+    z-index: 9999999;
+    width: 900px;
+    height: 300px;
+    display: block;
+    width: 900px;
+    height: 300px;
+    background: -moz-linear-gradient(to bottom, rgba(21,12,57,0.6) 25%,rgba(43,32,62,0.55) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(to bottom, rgba(21,12,57,0.6) 25%,rgba(43,32,62,0.55) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(21,12,57,0.6) 25%,rgba(43,32,62,0.55) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#150c39', endColorstr='#ba2b203e',GradientType=0 ); /* IE6-9 */
+    color:#fff;
+    border-radius: 20px;
+    text-align: center;
+    border: 1px solid #9385bb;
+}
+.popup-content {
+    display: block;
+    width: 900px;
+    height: 300px;
+}
+.popup-content .left {
+    width: 240px;
+    height: 240px;
+    display: block;
+    position: relative;
+    float: left;
+    background: #7fc342;
+    border-right: 10px solid #fff;
+    border-radius: 20px 0px 0px 20px;
+    text-align: center;
+    padding: 30px;
+    top: 0;
+    left: 0;
+}
+.popup-content .right {
+    width: 520px;
+    height: 240px;
+    display: block;
+    position: relative;
+    float: left;
+    text-align: left;
+    padding: 30px;
+    top: 0;
+    left: 0;
+}
+.leaflet-popup-content .flecha-before {
+    width:0px;
+    height:0px;
+    border-left: 40px solid transparent;  /* izquierda flecha */
+    border-right: 40px solid transparent; /* derecha flecha */
+    border-top: 40px solid rgba(140, 120, 199, 0.5); /* base flecha y color*/
+    font-size:0px;
+    line-height:0px;
+    bottom: 0px;
+    left: 0px;
+    position: absolute;
+    border: 1px solid #9385bb;
+}
+.leaflet-popup-content .flecha-after {
+    width:0px;
+    height:0px;
+    border-left: 40px solid transparent;  /* izquierda flecha */
+    border-right: 40px solid transparent; /* derecha flecha */
+    border-top: 40px solid rgba(22, 17, 37, 0.5); /* base flecha y color*/
+    font-size:0px;
+    line-height:0px;
+    bottom: -1px;
+    left: 0px;
+    position: absolute;
+}
+.popup-content .left .icono-bus {
+    font-size: 120px;
+}
+.popup-content .left h1 {
+    margin: 0;
+    font-size: 50px;
+    text-transform: uppercase;
+    font-family: 'Uni-Sans-Bold';
+}
+.popup-content .right h4 {
+    font-size: 40px;
+    margin: 0;
+    text-transform: uppercase;
+    font-family: 'Uni-Sans-Bold';
+}
+.popup-content .right h5 {
+    font-size: 24px;
+    margin: 0;
+    text-transform: uppercase;
+    font-family: 'Uni-Sans-Bold';
+}
+
+.leaflet-container .leaflet-control-attribution {
+    background: rgb(83, 76, 117);
+}

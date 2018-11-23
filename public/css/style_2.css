@@ -1,0 +1,244 @@
+
+
+body
+{
+    background-color: #221939;
+    font-family: 'Open Sans', sans-serif;
+    color: white;
+}
+
+.top-controls .btn
+{
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
+    background-color: #534167;
+    color: white;
+    border: none;
+    margin-top: 10px;
+    margin-right: 5px;
+    margin-left: 5px;
+    float: right;
+}
+
+.top-controls .separator
+{
+    width: 1px;
+    height: 60px;
+    float: right;
+    margin-top: 10px;
+    border-right: 1px solid rgba(256, 256, 256, 0.1);
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+.top-controls .btn.active,.top-controls .btn:hover
+{
+    background-color: #B69EC1;
+}
+
+.content
+{
+    background-color: #28213e;
+    margin-top: 20px;
+    border-radius: 14px;
+    padding: 20px;
+}
+
+.traffic-col h3 .fa
+{
+    line-height: 30px;
+    vertical-align: middle;
+    font-size: 10pt;
+    margin-right: -2px;
+}
+
+.traffic-col-header {
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    background: -moz-linear-gradient(top, rgba(255,255,255,0.2) 0%, rgba(128,128,128,0.1) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top, rgba(255,255,255,0.2) 0%,rgba(128,128,128,0.1) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom, rgba(255,255,255,0.2) 0%,rgba(128,128,128,0.1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#80808080',GradientType=0 ); /* IE6-9 */
+}
+
+.traffic-col
+{
+    border-radius: 20px;
+}
+
+.traffic-col-high
+{
+    background-color: rgba(69, 50, 129, 0.5);
+}
+
+.traffic-col-mid
+{
+    background-color: rgba(95, 56, 98, 0.5);
+}
+
+.traffic-col-low
+{
+    background-color: rgba(66, 44, 73, 0.5);
+}
+
+.traffic-col h3
+{
+    font-weight: normal;
+}
+
+.traffic-col-inner
+{
+    border: 1px solid rgba(255,255,255,0.5);
+    border-radius: 14px;
+}
+
+.traffic-col .traffic-col-body .btn
+{
+    height: 60px;
+    border-radius: 31px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 0px;
+    transition: all 500ms ease;
+}
+
+.traffic-col .traffic-col-body .btn .fa.icon
+{
+    width: 58px;
+    height: 58px;
+    line-height: 60px;
+    border-radius: 30px;
+    font-size: 26pt;
+    float: left;
+    margin-top: 0px;
+    margin-left: 0px;
+}
+
+.traffic-col .traffic-col-body .btn h4
+{
+    margin-top: 9px;
+    margin-bottom: 0px;
+    font-size: 14px;
+    text-align: left;
+    padding-left: 80px;
+}
+
+.traffic-col .traffic-col-body .btn h3
+{
+    margin-top: 0px;
+    margin-bottom: 0px;
+    text-align: left;
+    font-size: 20px;
+    font-weight: bold;
+    padding-left: 80px;
+    line-height: 20px;
+    vertical-align: middle;
+}
+
+.traffic-col .traffic-col-body h3 .fa
+{
+    font-size: 23px;
+    font-weight: lighter;
+    margin-right: 0px;
+    margin-top: -3px;
+}
+
+.traffic-col .traffic-col-high .traffic-col-body .btn .fa.icon
+{
+    background-color: #CF0E4E;
+}
+
+.traffic-col .traffic-col-mid .traffic-col-body .btn .fa.icon
+{
+    background-color: #F8C204;
+}
+
+.traffic-col .traffic-col-low .traffic-col-body .btn .fa.icon
+{
+    background-color: #B69EC1;
+}
+
+.traffic-col .traffic-col-body .btn.active .fa.icon
+{
+    background-color: rgba(255,255,255,0.2) !important;
+}
+
+.traffic-col .traffic-col-high .traffic-col-body .btn
+{
+    background: linear-gradient(to right, #CF0E4E 50%, rgba(255,255,255,0.1) 50%);
+    background-position: right bottom;
+    background-size: 200% 100%;
+    background-repeat: no-repeat;
+}
+
+.traffic-col .traffic-col-mid .traffic-col-body .btn
+{
+    background: linear-gradient(to right, #F8C204 50%, rgba(255,255,255,0.1) 50%);
+    background-position: right bottom;
+    background-size: 200% 100%;
+    background-repeat: no-repeat;
+}
+
+.traffic-col .traffic-col-low .traffic-col-body .btn
+{
+    background: linear-gradient(to right, #B69EC1 50%, rgba(255,255,255,0.1) 50%);
+    background-position: right bottom;
+    background-size: 200% 100%;
+    background-repeat: no-repeat;
+}
+
+.traffic-col .traffic-col-body .btn.active
+{
+    background-position: left bottom;
+    color: white;
+}
+
+.traffic-col .traffic-col-body .btn:hover{
+    color:white;
+}
+
+.traffic-col .traffic-col-body .btn .fa.fa-times
+{
+    display: none;
+}
+
+.traffic-col .traffic-col-body .btn.active .fa.fa-search
+{
+    display: none;
+}
+
+.traffic-col .traffic-col-body .btn.active .fa.fa-times
+{
+    display: block;
+}
+
+.btn-back
+{
+    width: 45px;
+    height: 45px;
+    border-radius: 25px;
+    line-height: 45px;
+    margin-right: 10px;
+    background: rgba(255,255,255,0.2);
+}
+
+.subejes-title
+{
+    margin-top: 0px;
+    line-height: 40px;
+}
+
+.subaxis-controls
+{
+    display: none;
+}
+.btn {
+    border: 0px solid transparent !important;
+}
+
+
+/*logo AN Transito*/
+img.logo- {
+    width: 35%;
+}

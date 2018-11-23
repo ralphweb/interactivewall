@@ -1,0 +1,138 @@
+<header>
+    <div class="fila cabecera">
+        <div class="columna logo">
+            <a href="#"><img src="/imagenes/logo_an_transito.png"/></a>
+        </div>
+        <div class="columna menu">
+            <a href="http://172.17.200.64:9002/rrss" title="Twitter"><i class="icono-twitter"></i></a>
+            <a href="http://172.17.200.64:9002/alert" title="Metro"><i class="icono-metro"></i></a>
+            <a href="http://172.17.200.64:9002/control" title="Transantiago"><i class="icono-bus"></i></a>
+        </div>
+    </div>
+</header>
+<section class="contenedor lineas-metro">
+    <div class="fila titulo">
+        <h1>Metro de Santiago</h1>
+    </div>
+    <div class="fila lineas">
+        
+        <!-- Dinámico -->
+        
+        
+    </div>
+</section>
+
+<!-- Ventana Modal Formulario -->
+<section class="modal contenedor_modal" id="popup">  
+    <section class="contenido_modal">
+        <!-- titulo -->
+        <div class="fila titulo-modal">
+            <h2><i class="icono-editar"></i> Crear/editar evento </h2>
+        </div>
+        <!-- contenido -->
+        <div class="contenedor-contenido">
+            <!-- formulario -->
+            <form>
+                <!-- 1. Selecciona linea de metro -->
+                <div class="fila linea-form">
+                    <p>1. Selecciona línea de metro</p>
+                    <div class="opciones-lineas">
+                        <!-- contenido dinámico -->
+                    </div>
+                </div>
+                <!-- 2. Selecciona evento -->
+                <div class="fila evento-form">
+                    <p>2. Selecciona evento</p>
+                    <div class="opciones-eventos">
+                        
+                            <label for="Falla Eléctrica" class="iconos-eventos">
+                                <input type="radio" name="evento" id="evento-fe" value="falla-electrica" checked/>
+                                <span><i class="icono-evento-falla-electrica"></i></span>
+                            </label>
+                            <label for="Inundación" class="iconos-eventos">
+                                <input type="radio" name="evento" id="evento-i" value="inundacion"/>
+                                <span><i class="icono-evento-inundacion"></i></span>
+                            </label>
+                            <label for="Objeto Sospechoso" class="iconos-eventos">
+                                <input type="radio" name="evento" id="evento-os" value="objeto-sospechoso"/>
+                                <span><i class="icono-evento-objeto-sospechoso"></i></span>
+                            </label>
+                            <label for="Falla Mecánica" class="iconos-eventos">
+                                <input type="radio" name="evento" id="evento-fm" value="falla-mecanica"/>
+                                <span><i class="icono-evento-falla-mecanica"></i></span>
+                            </label>
+                            <label for="Desastre Natural" class="iconos-eventos">
+                                <input type="radio" name="evento" id="evento-dn" value="desastre-natural"/>
+                                <span><i class="icono-evento-desastre-natural"></i></span>
+                            </label>
+                            <label for="Disturbios" class="iconos-eventos">
+                                <input type="radio" name="evento" id="evento-d" value="disturbios"/>
+                                <span><i class="icono-evento-disturbios"></i></span>
+                            </label>
+                            <label for="Estación cerrada" class="iconos-eventos">
+                                <input type="radio" name="evento" id="evento-ec" value="estacion-cerrada"/>
+                                <span><i class="icono-evento-estacion-cerrada"></i></span>
+                            </label>
+                            <label for="Servicio Restablecido" class="iconos-eventos">
+                                <input type="radio" name="evento" id="evento-sr" value="servicio-restablecido"/>
+                                <span><i class="icono-evento-servicio-restablecido"></i></span>
+                            </label>
+                            <label for="Alerta Genérica" class="iconos-eventos">
+                                <input type="radio" name="evento" id="evento-ag" value="alerta-generica"/>
+                                <span><i class="icono-evento-alerta-generica"></i></span>
+                            </label>
+                        
+                    </div>
+                </div>
+                <!-- 3. Estación de metro & tiempo de retraso -->
+                <div class="fila estacion-tiempo">
+                    <div class="columna estacion-form">
+                        <p>3. Selecciona estación de metro</p>
+                        <div class="form-3">
+                            <select id="estaciones-metro" name="estaciones"> 
+                                 <option value="nombre 1">Nombre de estación 1</option>
+                                 <option value="nombre 2">Nombre de estación 2</option>  
+                                 <option value="nombre 3">Nombre de estación 3</option>  
+                            </select>
+                        </div>
+                    </div>
+                    <div class="columna retraso-form">
+                        <p>4. Ingresa tiempo de retraso</p>
+                        <div class="tiempo">
+                            <div class="reloj"><i class="icono-reloj"></i></div>
+                            <div class="hora"><input type="number" name="hora" placeholder="00"></div>
+                            <div class="dos-puntos"><p>:</p></div>
+                            <div class="minutos"><input type="number" name="minutos" placeholder="00"></div>
+                            <div class="hrs"><p>hrs</p></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 4. Información adicional -->
+                <div class="fila info-form">
+                    <p>5. Información adicional (opcional)</p>
+                    <div class="form-5">
+                        <textarea id="info-adicional" name="info" placeholder="Escribe no más de {{limit}} caracteres"></textarea>
+                        <span><text class="current">0</text>/{{limit}}</span>
+                    </div>
+                </div>
+                <!-- 5. Botones -->
+                <div class="fila botones-form">
+                    <div class="boton-salir"><button type="button" class="salir"><i class="icono-cerrar"></i> Salir</button></div>
+                    <div class="boton-guardar"><button type="button" class="guardar"><i class="icono-aprobado"></i> Guardar</button></div>
+                </div>
+            </form>
+            <!-- fin formulario -->
+        </div>
+    </section>
+    <a class="cerrar_modal"><i class="icono-cerrar"></i></a>
+</section>
+<section class="modal overlay"></section>
+<div class="loader">
+    <div class="contenedor-loader">
+        <img src="/imagenes/loader.svg"/>
+    </div>
+</div>
+<!-- Fin Ventana Modal Formulario -->
+<script>
+    window.limit = {{limit}};
+</script>

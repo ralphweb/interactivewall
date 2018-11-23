@@ -1,0 +1,50 @@
+@font-face {
+  font-family: "Polaris-Bold";
+  src: url("/fonts/Polaris-Bold.woff") format('woff');
+  font-weight: bold;
+}
+@font-face {
+  font-family: "Polaris-BoldItalic";
+  src: url("/fonts/Polaris-BoldItalic.woff") format('woff');
+  font-weight: bold;
+}
+@font-face {
+  font-family: "Polaris-Book";
+  src: url("/fonts/Polaris-Book.woff") format('woff');
+  font-weight: bold;
+}
+@font-face {
+  font-family: "Polaris-BookItalic";
+  src: url("/fonts/Polaris-BookItalic.woff") format('woff');
+  font-weight: bold;
+}
+@font-face {
+  font-family: "Polaris-Heavy";
+  src: url("/fonts/Polaris-Heavy.woff") format('woff');
+  font-weight: bold;
+}
+@font-face {
+  font-family: "Polaris-HeavyItalic";
+  src: url("/fonts/Polaris-light.woff") format('woff');
+  font-weight: bold;
+}
+@font-face {
+  font-family: "Polaris-Light";
+  src: url("/fonts/Polaris-Light.woff") format('woff');
+  font-weight: bold;
+}
+@font-face {
+  font-family: "Polaris-LightItalic";
+  src: url("/fonts/Polaris-LightItalic.woff") format('woff');
+  font-weight: bold;
+}
+@font-face {
+  font-family: "Polaris-Medium";
+  src: url("/fonts/Polaris-Medium.woff") format('woff');
+  font-weight: bold;
+}
+@font-face {
+  font-family: "Polaris-MediumItalic";
+  src: url("/fonts/Polaris-MediumItalic.woff") format('woff');
+  font-weight: bold;
+}

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Opta Heatmap & Touchmap</title>
+        <link rel="stylesheet" href="http://widget.cloud.opta.net/v3/css/v3.football.opta-widgets.css">
+        <style type="text/css">
+            .Opta-Teamsheet-Holder {
+                width: 0px !important;
+                overflow: hidden;
+            }
+            .Opta .Opta-Nav {
+                height: 0px !important;
+                overflow: hidden;
+            }
+            .Opta>.Opta_W {
+                background: transparent;
+            }
+            .Opta>.Opta_W>div {
+                background-color: transparent;
+            }
+            .Opta table{
+                display: none;
+            }
+            .Opta .Opta-FootballPitch .Opta-Field>.Opta-Markings {
+                opacity: 0;
+            }
+            .Opta .Opta-FootballPitch.Opta-FootballPitch-Horizontal {
+                background: none;
+            }
+            .Opta .Opta_F_H_N .Opta-FootballPitch canvas {
+                position: fixed !important;
+                width: 100%;
+                height: 100%;
+                margin: 0 auto;
+                left: 0;
+                right: 0;
+                -webkit-perspective: 100px; /* Safari 4-8  */
+                perspective: 100px;
+            }
+        </style>
+    </head>
+    <body>
+        <opta-widget widget="heatmap" competition="4" season="2013" match="731767" preselected_player="all" template="normal" live="true" show_maps="all" orientation="horizontal" side="both" dimension="2D" one_direction="false" show_match_header="false" show_score="false" show_halftime_score="false" show_crests="false" show_team_formation="true" show_competition_name="false" show_date="false" date_format="dddd D MMMM YYYY" show_team_sheets="true" show_subs="true" show_position="true" show_timecontrols="false" show_timecontrols_buttons="false" show_timecontrols_bar="false" show_tooltips="false" competition_naming="full" team_naming="full" player_naming="full" show_logo="false" show_title="false" breakpoints="400, 700" sport="football"></opta-widget>
+        <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+        <script src="http://widget.cloud.opta.net/v3/v3.opta-widgets.js"></script>
+        <script>
+            var opta_settings = {
+                subscription_id: '3005df5a4344dc9c28a2d0bbeca233e5',
+                language: 'en_GB',
+                timezone: 'Europe/London'
+            };
+
+            if (window.addEventListener) {
+                window.addEventListener("message", onMessage, false);        
+            } 
+            else if (window.attachEvent) {
+                window.attachEvent("onmessage", onMessage, false);
+            }
+
+            function onMessage(event) {
+                // Check sender origin to be trusted
+                //if (event.origin !== "http://example.com") return;
+
+                var data = event.data;
+
+                if (typeof(window[data.func]) == "function") {
+                    window[data.func].call(null, data.message);
+                }
+            }
+
+            // Function to be called from iframe
+            function opta(message) {
+                var opts = message.split("@@");
+                var target = opts[0];
+                var index = parseInt(opts[1]);
+                $(".Opta-"+target+" .Opta-Player").eq(index).click();
+            }
+        </script>
+    </body>
+</html>

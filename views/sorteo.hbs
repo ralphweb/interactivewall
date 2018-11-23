@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="https://social-hound.com/assets/images/favicon.png" type="image">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/animate.css">
+    <link rel="stylesheet" href="/css/sorteo.css">
+    <title>{{title}}</title>
+  </head>
+  <body>
+    <section id="concurso">
+      <h5 class="text-center">Elegir ganadores {{search}}</h5>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm text-center">
+            <button type="button" class="btn">Ganadores</button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="ganadores">
+      <h5 class="text-center animated flipInY">Los Ganadores</h5>
+      <div class="container winners">
+        <div class="row">
+          <!-- contenido dinámico -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Nombre del usuario</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="row winners-modal">
+              <!-- contenido dinamico -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+      var winnersArr = [];
+      $(document).ready(function(){ // animación y activo en herramientas
+        $('.btn').on('click', function() {
+          $.get('/rrss/vertigo/get/contest/{{search}}',{},function(data) {
+            $(".winners").empty();
+            var size = parseInt('{{size}}');
+            var limit = data.length>size?size:data.length;
+            for(var i=0; i<limit; i++) {
+              if(i%2==0||i==0) {
+                $(".winners").append(`<div class="row rowinners"></div>`);
+              }
+              var winner = data[i];
+              winnersArr.push(winner);
+
+              var $winnerItem = $(`
+                  <div class="col-sm text-center winner-item" data-id="`+i+`">
+                    <div class="grid-item text-left">
+                      <div class="card social-card animated bounceInUp t`+(i+1)+`">
+                        <div class="card-body">
+                          <span class="autor-rss rss-twitter row">
+                            <p class="contador">`+winner.count+`</p>
+                            <a href="https://twitter.com/statuses/`+winner.text[0].id_str+`" target="_blank">
+                              <i class="fa fa-twitter" aria-hidden="true"></i>
+                            </a>
+                          </span>
+                          <span class="autor-avatar">
+                            <img class="card-img-top" src="`+winner._id.profile_pic+`" alt="Card image cap">
+                          </span>
+                          <span class="autor-name">
+                            <a href="#">
+                              <h4 class="card-title">`+winner._id.name+`</h4>
+                              <h6 class="card-subtitle mb-2 text-muted">@`+winner._id.user+`</h6>
+                            </a>
+                          </span>
+                          <span class="autor-text">
+                            <p class="card-text">`+winner.text[0].text+`</p>
+                          </span>
+                          <span class="autor-date">
+                            <small><p data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Fecha de emisión"><i class="fa fa-calendar-o" aria-hidden="true"></i> `+winner.text[0].created_at+`</p></small>
+                          </span>
+                          <span class="autor-date">
+                            <small class="more-tweets"><p data-toggle="modal" data-target="#exampleModal"></i>Ver tweets</p></small>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                `);
+
+              if(winner.count<=1) {
+                $winnerItem.find(".more-tweets").hide();
+              }
+
+              $(".winners .rowinners").eq($(".winners .rowinners").length-1).append($winnerItem);
+
+              $(".more-tweets").unbind("click");
+              $(".more-tweets").click(function(e) {
+                var index = $(this).closest(".winner-item").attr("data-id");
+                var winnerModal = winnersArr[index];
+                $("#exampleModal").find(".modal-body .winners-modal").empty();
+
+                $("#exampleModalLabel").text(winnerModal._id.name+" (@"+winnerModal._id.user+")");
+
+                for(var i=0;i<winnerModal.text.length;i++) {
+                  var $tweet = $(`
+                      <div class="col-sm-12 col-md-6 text-center">
+                        <div class="grid-item text-left">
+                          <div class="card social-card">
+                            <div class="card-body">
+                              <span class="autor-rss rss-twitter row">
+                                <a href="https://twitter.com/statuses/`+winnerModal.text[i].id_str+`" target="_blank">
+                                  <i class="fa fa-twitter" aria-hidden="true"></i>
+                                </a>
+                              </span>
+                              <span class="autor-avatar">
+                                <img class="card-img-top" src="`+winnerModal._id.profile_pic+`" alt="Card image cap">
+                              </span>
+                              <span class="autor-name">
+                                <a href="#">
+                                  <h4 class="card-title">`+winnerModal._id.name+`</h4>
+                                  <h6 class="card-subtitle mb-2 text-muted">@`+winnerModal._id.user+`</h6>
+                                </a>
+                              </span>
+                              <span class="autor-text">
+                                <p class="card-text">`+winnerModal.text[i].text+`</p>
+                              </span>
+                              <span class="autor-date">
+                                <small><p data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Fecha de emisión"><i class="fa fa-calendar-o" aria-hidden="true"></i> `+winnerModal.text[i].created_at+`</p></small>
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    `);
+                  $("#exampleModal").find(".modal-body .winners-modal").append($tweet);
+                }
+
+                $("#exampleModal").modal("show");
+              });
+            }
+            $('#ganadores').toggleClass("active");
+            $('#concurso').toggleClass("delete"); 
+          });  
+        });
+      });
+    </script>
+  </body>
+</html>

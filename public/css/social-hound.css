@@ -1,0 +1,10 @@
+.social-hound-watermark
+{
+	opacity: 0.2;
+	width: 200px;
+	position: absolute;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+	bottom: 30px;
+}
