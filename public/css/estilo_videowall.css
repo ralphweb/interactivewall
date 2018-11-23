@@ -311,7 +311,12 @@ i.material-icons {
     line-height: normal;
 }
 .perfil-usuario {
-  margin-bottom: 20px;
+    justify-content: center;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 .red-activa {
     margin: 40px 0 0;
