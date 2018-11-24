@@ -70,7 +70,7 @@ function startEvents() {
 }
 
 function getCount(topic) {
-	$.get('https://api.social-hound.com/count/'+topic,function(contador) {
+	$.get('https://api.social-hound.com/'+topic+"/count/",function(contador) {
 		console.log(contador);
 		$("text.count").html(contador.data[0].total);
         socket.emit("count",{topic:topic,count:contador.data[0].total});
