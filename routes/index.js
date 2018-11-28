@@ -5,13 +5,19 @@ const MongoClient = require('mongodb').MongoClient;
 var request = require('request');
 var path = require('path');
 
+var cache = {maxID:"none"};
+
+var api ="http://127.0.0.1:9001";
+
 // Connection URL
-const url = 'mongodb://localhost:27017';
-const systemdb = 'SH-dev';
+const url = 'mongodb://159.65.70.51:27017';
+const systemdb = 'sh-system';
 const fetchdb = 'sh-fetch';
 
 router.get('/:topic/rrss', function(req, res, next) {
 	var topic = req.params.topic;
+	cache.maxID = "none";
+
 	MongoClient.connect(url, function(err, client) {
 		const collection = client.db(systemdb).collection('topics');
 		  collection.find({"shortname":topic}).toArray(function(err,docs) {
@@ -37,90 +43,53 @@ router.get('/:topic/control', function(req, res, next) {
 	res.render('control', { topic:topic, title: 'Social-hound | Control',layout:'blank_layout' });
 });
 
-router.get('/rrss/get/inbox/:page?/:size?', function(req, res, next) {
-	var page = req.params.page;
-	var size = req.params.size;
-	MongoClient.connect(url, function(err, client) {
-	  const collection = client.db(fetchdb).collection('statuses');
-	  if(page!=undefined&&size!=undefined) {
-  		  collection.find({"selected":false,"hidden":false,"created_at":{"$type":9}}).limit(parseInt(size)).skip(parseInt(page)*parseInt(size)).sort({"created_at":-1}).toArray(function(err,docs) {
-  	  	  	res.status(200).send(docs);
-  	  	  });
-	  } else {
-  		  collection.find({"selected":false,"hidden":false,"created_at":{"$type":9}}).sort({"created_at":-1}).toArray(function(err,docs) {
-  	  	  	res.status(200).send(docs);
-  	  	  	docs.forEach(function(doc) {
-  	  	  		doc.created_at=new Date(doc.created_at);
-  	  	  		console.log(doc.created_at);
-  	  	  		collection.save(doc); 
-  	  	  	})
-  	  	  });
-	  }
-	  //client.close();
-	});
+router.get('/rrss/reset/cacheID',function(req, res, next){
+    cache.maxID = "none";
+    res.json({status:"success"});
 });
 
-router.get('/rrss/:topic/get/inbox/:page?/:size?', function(req, res, next) {
-	var page = req.params.page;
-	var size = req.params.size;
-	var topic = req.params.topic;
-	MongoClient.connect(url, function(err, client) {
-	  const collection = client.db(fetchdb).collection('statuses');
-	  if(page!=undefined&&size!=undefined) {
-  		  collection.find({"topic":topic,"selected":false,"hidden":false,"created_at":{"$type":9}}).limit(parseInt(size)).skip(parseInt(page)*parseInt(size)).sort({"created_at":-1}).toArray(function(err,docs) {
-  	  	  	res.status(200).send(docs);
-  	  	  });
-	  } else {
-  		  collection.find({"topic":topic,"selected":false,"hidden":false,"created_at":{"$type":9}}).sort({"created_at":-1}).toArray(function(err,docs) {
-  	  	  	res.status(200).send(docs);
-  	  	  	docs.forEach(function(doc) {
-  	  	  		doc.created_at=new Date(doc.created_at);
-  	  	  		console.log(doc.created_at);
-  	  	  		collection.save(doc); 
-  	  	  	})
-  	  	  });
-	  }
-	  //client.close();
-	});
-});
+router.get('/rrss/:topic/get/inbox/:search?/:page/:size', function(req, res, next) {
+    var page = req.params.page;
+    var size = req.params.size;
+    var topic = req.params.topic;
+    var _maxID= cache.maxID || "none";
+    let _url ;
+    if (req.params.search===undefined){
+        _url = api+'/'+topic+'/inbox/'+_maxID+"/"+page+"/"+size+"/";
+    }else{
+        _url = api+'/'+topic+'/inbox/'+req.params.search+'/'+_maxID+"/"+page+"/"+size+"/";
+    }
+    var options = { method: 'GET',
+        url: _url,
+        headers:
+            { 'cache-control': 'no-cache' } };
 
-router.get('/rrss/get/selected/:page?/:size?', function(req, res, next) {
-	var page = req.params.page;
-	var size = req.params.size;
-	MongoClient.connect(url, function(err, client) {
-	  const collection = client.db(fetchdb).collection('statuses');
-	  if(page!=undefined&&size!=undefined) {
-  		  collection.find({"selected":true,"hidden":false,"created_at":{"$type":9}}).limit(parseInt(size)).skip(parseInt(page)*parseInt(size)).toArray(function(err,docs) {
-  	  	  	res.status(200).send(docs);
-  	  	  });
-	  } else {
-  		  collection.find({"selected":true,"hidden":false,"created_at":{"$type":9}}).toArray(function(err,docs) {
-  	  	  	res.status(200).send(docs);
-  	  	  });
-	  }
-	  client.close();
-	});
+    request(options, function (error, response, body) {
+        if (error) throw new Error(error);
+       var result = JSON.parse(body);
+       cache.maxID = result.maxID;
+        res.status(200).json(result.data);
+    });
 });
 
 router.get('/rrss/:topic/get/selected/:page?/:size?', function(req, res, next) {
-	res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
-	var page = req.params.page;
-	var size = req.params.size;
-	var topic = req.params.topic;
-	MongoClient.connect(url, function(err, client) {
-	  const collection = client.db(fetchdb).collection('statuses');
-	  if(page!=undefined&&size!=undefined) {
-  		  collection.find({"topics":topic,"selected":true,"hidden":false})/*.sort({"order":1})*/.limit(parseInt(size)).skip(parseInt(page)*parseInt(size)).toArray(function(err,docs) {
-  	  	  	res.status(200).send(docs);
-  	  	  });
-	  } else {
-  		  collection.find({"topics":topic,"selected":true,"hidden":false})/*.sort({"order":1})*/.toArray(function(err,docs) {
-  	  	  	res.status(200).send(docs);
-  	  	  });
-	  }
-	  client.close();
-	});
+    var page = req.params.page;
+    var size = req.params.size;
+    var topic = req.params.topic;
+
+    var options = { method: 'GET',
+        url: api+'/'+topic+'/mentions/selected/true/hidden/false',
+        headers:
+            { 'cache-control': 'no-cache' } };
+    request(options, function (error, response, body) {
+        if (error) throw new Error(error);
+        //console.log(response);
+        res.status(200).json(JSON.parse(body));
+        // console.log(body);
+    });
+
 });
 
 router.post('/rrss/post/update-media/:status/:media/:show?', function(req, res, next) {
@@ -140,6 +109,7 @@ router.post('/rrss/post/update-media/:status/:media/:show?', function(req, res, 
 router.get('/rrss/:topic/get/mention/:search', function(req, res, next) {
 	var topic = req.params.topic;
 	var search = decodeURIComponent(req.params.search);
+
 	MongoClient.connect(url, function(err, client) {
 	  const collection = client.db(fetchdb).collection('statuses');
 	  collection.find({ "topic":topic,"$text": { "$search": search } }).toArray(function(err,docs) {
@@ -170,49 +140,51 @@ router.get('/rrss/:topic/get/contest/:search', function(req, res, next) {
 	});
 });
 
-router.post('/rrss/:topic/post/update/:status?/:field?/:value?', function(req, res, next) {
-	///rrss/alangulo/post/update/1005917258114269184/selected/true
-	res.header("Access-Control-Allow-Origin", "*");
+router.post('/rrss/post/update/:status?/:field?/:value?', function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
-	var status = req.params.status;
-	var field = req.params.field;
-	var topic = req.params.topic;
-	var value = isNaN(parseInt(req.params.value))?(req.params.value == 'true'):parseInt(req.params.value);
-	var statusJSON = req.body.status!=undefined?JSON.parse(req.body.status):undefined;
-	console.log(status);
-	console.log(field);
-	console.log(value);
-	MongoClient.connect(url, function(err, client) {
-	  const collection = client.db(fetchdb).collection('statuses');
-	  if(status!=undefined&&field!=undefined&&value!=undefined) {
-	  	  //todos los campos se recibieron correctamente
-	  	  switch(field) {
-	  	  	case 'hidden':
-  			  collection.updateOne({"_id":status},{$set:{"hidden":value}},function(err,docs) {
-  		  	  	res.status(200).send(docs);
-  		  	  });
-  		  	  break;
-  		  	case 'selected':
-				collection.updateOne({"_id":status},{$set:{"selected":value}},function(err,docs) {
-					res.status(200).send(docs);
-				});
-	  		  	break;
-   		  	case 'order':
- 				collection.updateOne({"_id":status},{$set:{"order":value}},function(err,docs) {
- 					res.status(200).send(docs);
- 				});
- 	  		  	break;
-	  	  }
-	  } else if(statusJSON!=undefined) {
-	  	try {
-		  collection.replaceOne({"_id":statusJSON._id},statusJSON);
-		  res.status(200).send({replaced:true});
-	  	} catch(e) {
-	  	  res.status(500).send(e);
-	  	}
-	  }
-	  client.close();
-	});
+    var status = req.params.status;
+    var field = req.params.field;
+    //invocar a update
+
+    var value = isNaN(parseInt(req.params.value))?(req.params.value == 'true'):parseInt(req.params.value);
+    var statusJSON = req.body.status!=undefined?JSON.parse(req.body.status):undefined;
+    console.log(status);
+    console.log(field);
+    console.log(value);
+
+    ///1061718297840967680/hidden/true
+    var url =api+"/"+status;
+    if(status!=undefined&&field!=undefined&&value!=undefined) {
+
+        switch (field) {
+            case 'hidden':
+                url += "/hidden/" + value;
+                break;
+            case 'selected':
+                url += "/selected/" + value;
+                break;
+            case 'order':
+                url += "/order/" + value;
+                break;
+        }
+
+        var options = {
+            method: 'PUT',
+            url: url,
+            headers:
+                {'cache-control': 'no-cache'}
+        };
+
+        request(options, function (error, response, body) {
+            if (error) throw new Error(error);
+            // console.log(response);
+            res.status(200).json({detail: JSON.parse(body)});
+            // console.log(body);
+        });
+    }else{
+    		res.status(404).json({status:'error', code:404});
+		}
 });
 
 /* GET home page. */
