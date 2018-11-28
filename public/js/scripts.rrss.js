@@ -540,14 +540,9 @@ function initRRSSEvents() {
     });
 }
 
-var deleteRecursive = function(idsToDelete,index,callback) {
+function deleteRecursive(idsToDelete,index,callback) {
     if(index<idsToDelete.length) {
-        $.ajax({
-            type: 'PUT',
-            url: 'https://api.social-hound.com/'+idsToDelete[index]+'/selected/false',
-            contentType: 'application/json',
-            data: JSON.stringify({}), // access in body
-        }).done(function () {
+        $.post('/rrss/post/update/'+idsToDelete[index]+'/hidden/true',{},function(data) {
             $(".tweet-entrante[data-tweet-id='"+idsToDelete[index]+"']").slideUp(255,function() {
                 $(this).remove();
                 deleteRecursive(idsToDelete,index+1,function() {
