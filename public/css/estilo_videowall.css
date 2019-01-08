@@ -326,14 +326,6 @@ i.material-icons {
     width: 90px;
 }
 
-#myVideo {
-    position: fixed;
-    right: 0;
-    bottom: 0;
-    min-width: 100%; 
-    min-height: 100%;
-}
-
 .container {
     transition: all 1000ms ease-in-out;
     width: 100vw;
@@ -356,7 +348,7 @@ i.material-icons {
     margin: 0 auto;
 }
 
-.container.top
+.container.bottom
 {
   top: 100vh;
   align-items: center;
@@ -372,9 +364,17 @@ i.material-icons {
 {
   font-size: 90pt;
 }
-.container.bottom
+.container.top
 {
   top: -100vh;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  display: flex;
+  text-shadow: 2px 2px #000;
+  font-family: var(--font-polaris-heavy);
+  flex-direction: column;
+  flex-wrap: nowrap;
 }
 .container.active
 {
@@ -408,9 +408,22 @@ i.material-icons {
     left: 0;
     right: 0;
     text-align: center;
-    font-family: 'GothicCopihue';
+    font-family: 'BebasNeue';
 }
 
+.lascondes h3.contador-subtitulo {
+    margin-bottom: 10vh;
+    background: transparent;
+}
+
+.lascondes h1.menciones {
+    margin-top: 75vh;
+}
+
+.lascondes p.card-text {
+    margin: auto;
+    max-width: 60%;
+}
 
 @media screen and (min-width: 768px) { 
   .modal:before {

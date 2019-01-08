@@ -17,8 +17,12 @@ $(function() {
 	});
 
     socket.on('togglecontador',function(msg) {
-        console.log('togglecontador');
         $('.container').toggleClass('active');
+        if($(".logovideo").hasClass("active")) {
+            var vid = $(".logovideo")[0];
+            vid.currentTime = 0;
+            vid.play();
+        }
     });
 
     socket.on('count',function(msg) {
