@@ -110,8 +110,8 @@ function loadData(callback) {
                                             <a href="#" class="media-pic photo" data-toggle="modal" data-target="#`+tweet._id+`">
                                                 <i class="fa fa-picture-o" aria-hidden="true"></i>
                                             </a>
-                                            <a href="#">
-                                                <img src="/img/md-tw.png">
+                                            <a href="#" class="watermark">
+                                               
                                             </a>
                                         </span>
                                     </div>
