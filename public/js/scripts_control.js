@@ -6,7 +6,9 @@ $(function() {
 			interval: false
 		});
 
+        socket.emit("newtweet",{topic:topic});
 		socket.emit("carouselcurrentreq",{topic:topic});
+
 	});
 
     socket.on('connect', function() {

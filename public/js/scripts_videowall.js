@@ -202,6 +202,9 @@ function loadData(callback) {
         	    }
         	    $(".carousel-inner").append($tweetObj);
         	} else {
+                //edited?
+                $(".carousel-inner").find(".carousel-item[data-id='"+tweet._id+"']").find(".card-title").html(tweet.author.name);
+                $(".carousel-inner").find(".carousel-item[data-id='"+tweet._id+"']").find(".card-text").html(tweet.title);
                 $(".carousel-inner").find(".carousel-item[data-id='"+tweet._id+"']").attr("revised","true");
             }
         });
