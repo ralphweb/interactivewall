@@ -1,6 +1,13 @@
 var intervalCarousel = null;
 var autocarousel = false;
 var autotime = 0;
+var emoji = new EmojiConvertor();
+emoji.path = 'https://unicodey.com/js-emoji/build/emoji-data/img-emojione-64/';
+emoji.sheet = 'https://unicodey.com/js-emoji/build/emoji-data/sheet_emojione_64.png';
+emoji.use_sheet = true;
+emoji.replace_mode = 'unified';
+emoji.init_env();
+
 $(function() {
     $(".carousel-inner").empty();
 	loadData(function() {
