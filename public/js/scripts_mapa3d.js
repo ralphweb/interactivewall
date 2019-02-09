@@ -161,7 +161,7 @@ function loadData(callback) {
         data.forEach(function(tweet) {
           if($(".carousel-inner").find(".carousel-item[data-id='"+tweet._id+"']").length==0) { 
               if(tweet.hasOwnProperty("geo")) {
-                  var marker = WE.marker(tweet.geo).addTo(markerGroup);
+                  var marker = WE.marker(tweet.geo).addTo(map);
                   markerGroup.push(marker);
                   marker.bindPopup("<b>"+tweet.author.name+"</b><br><span style='font-size:10px;color:#999'>"+tweet.author.username+"</span>"+tweet.title+"<br />", {maxWidth: 150, closeButton: true}).openPopup();
               }    
