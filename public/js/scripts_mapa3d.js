@@ -42,17 +42,6 @@ function flyToJapan() {
 
 function panTo(coords) {
   let popup = markerElements[index];
-
-  try {
-    var px = popup._latlng; // find the pixel location on the map where the popup anchor is
-    console.log(px);
-    var popupHeight = popup._container.clientHeight // find the height of the popup container, divide by 2, subtract from the Y axis of marker location
-    console.log(popupHeight);
-  } catch(e) {
-    console.log(e);
-  }
-  
-
   let scoords = [];
   if(!markerHasMedia[index]) {
     scoords[0] = coords[0]>0?coords[0]-24:coords[0]-24;
@@ -67,7 +56,11 @@ function panTo(coords) {
       scoords[0] = coords[0]>0?coords[0]-24:coords[0]-24;
       scoords[1] = coords[1]>0?coords[1]-32:coords[1]-32;
     }
-  }  
+  } 
+  console.log("coords"); 
+  console.log(coords);  
+  console.log("scoords"); 
+  console.log(scoords); 
   map.panInsideBounds([coords, scoords],
           {heading: 0, tilt: 25, duration: 2});
 }
