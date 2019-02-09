@@ -7,7 +7,7 @@ var path = require('path');
 
 var cache = {maxID:"none"};
 
-var api ="http://127.0.0.1:9001";
+var api ="https://127.0.0.1:9001";
 
 // Connection URL
 const url = 'mongodb://159.65.70.51:27017';
@@ -191,6 +191,12 @@ router.post('/rrss/post/update/:status?/:field?/:value?', function(req, res, nex
 router.get('/:topic', function(req, res, next) {
 	var topic = req.params.topic;
   res.render('videowall', { topic:topic, title: 'Social-hound | Videowall',layout:'blank_layout' });
+});
+
+/* GET home page. */
+router.get('/:topic/map', function(req, res, next) {
+    var topic = req.params.topic;
+  res.render('mapa3d', { topic:topic, title: 'Social-hound | Mapa',layout:'blank_layout' });
 });
 
 module.exports = router;
