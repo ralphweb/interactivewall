@@ -13,6 +13,7 @@ var mentions;
 /* MAPA */
 var map;
 var markerGroup = [];
+var markerElements = [];
 var index = 0;
 
 function setZoom(zoom) {
@@ -79,7 +80,9 @@ $(function() {
 
   socket.on('carouselnext',function(msg) {
     console.log('next');
+    markerElements[index].closePopup();
         index = index<markerGroup.length-1?index+1:0;
+        markerElements[index].openPopup();
         panTo(markerGroup[index]);
   });
 
@@ -99,7 +102,9 @@ $(function() {
 
   socket.on('carouselprev',function(msg) {
     console.log('prev');
+    markerElements[index].closePopup();
     index = index>0?index-1:markerGroup.length-1;
+    markerElements[index].openPopup();
     panTo(markerGroup[index]);
   });
 
@@ -120,7 +125,9 @@ $(function() {
         if(auto&&intervalCarousel==null) {
             autocarousel = true;
             intervalCarousel = setInterval(function() {
+                markerElements[index].closePopup();
                 index = index<markerGroup.length-1?index+1:0;
+                markerElements[index].openPopup();
                 panTo(markerGroup[index]);
             },time);
         } else if(!auto&&intervalCarousel!=null) {
@@ -146,13 +153,33 @@ $(function() {
 
 function loadData(callback) {
   markerGroup = [];
+  markerElements = [];
   $.get('https://api.social-hound.com/'+topic+'/mentions/selected/true',{},function(data) {
         data.forEach(function(tweet) {
           if($(".carousel-inner").find(".carousel-item[data-id='"+tweet._id+"']").length==0) { 
               if(tweet.hasOwnProperty("geo")) {
                   var marker = WE.marker(tweet.geo).addTo(map);
                   markerGroup.push(tweet.geo);
-                  marker.bindPopup("<b>"+tweet.author.name+"</b><br><span style='font-size:10px;color:#999'>"+tweet.author.username+"</span>"+tweet.title+"<br />", {maxWidth: 150, closeButton: true}).openPopup();
+                  marker.bindPopup(`<div class="col-sm-4 mention-card" data-id="`+tweet._id+`">
+                  <div class="card">
+                    <div class="card-body">
+                      <div class="row align-items-center mb-3">
+                        <div class="col-auto">
+                          <a class="avatar avatar-sm" href="profile-posts.html"><img alt="..." class="avatar-img rounded-circle" src="`+tweet.author.profile_pic+`"></a>
+                        </div>
+                        <div class="col ml--9">
+                          <h5 class="card-title m-0 p-0">`+tweet.author.name+`</h5>
+                          <h6 class="card-subtitle text-muted m-0 p-0" style="`+(tweet.author.username==undefined?"display:none":"")+`">`+tweet.author.username+`</h6>
+                        </div>
+                        <div class="col-auto">
+                          <h5 class="bg-twitter"><a href="`+tweet.url+`" target="_blank"><i class="fab fa-`+tweet.platform+`"></i></a></h5>
+                        </div>
+                      </div>
+                      <p class="card-text">`+tweet.title+`</p>
+                    </div>
+                  </div>
+                </div>`, {maxWidth: 500, closeButton: false});
+                  markerElements.push(marker);
               }    
           }
         })
