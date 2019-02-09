@@ -50,9 +50,8 @@ function panTo(coords) {
     scoords[1] = coords[1]>0?coords[1]-32:coords[1]-32;
   } else {
     if(markerHasMedia[index]=="image") {
-      coords[0] = coords[0]+window.offset;
-      scoords[0] = coords[0]>0?coords[0]-24:coords[0]-24;
-      scoords[1] = coords[1]>0?coords[1]-32:coords[1]-32;
+      scoords[0] = coords[0]>0?coords[0]+14:coords[0]+14;
+      scoords[1] = coords[1]>0?coords[1]+3:coords[1]+3;
     }
     if(markerHasMedia[index]=="video") {
       scoords[0] = coords[0]>0?coords[0]-24:coords[0]-24;
