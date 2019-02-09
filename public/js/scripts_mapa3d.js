@@ -151,9 +151,11 @@ $(function() {
 });
 
 function loadData(callback) {
-  markerGroup.forEach(function(mark) {
-    map.removeLayer(mark);
-  });
+  if(markerGroup.length>0) {
+    markerGroup.forEach(function(mark) {
+      map.removeLayer(mark);
+    });
+  }
   markerGroup = [];
   $.get('https://api.social-hound.com/'+topic+'/mentions/selected/true',{},function(data) {
         data.forEach(function(tweet) {
