@@ -12,7 +12,7 @@ var mentions;
 
 /* MAPA */
 var map;
-var markers;
+var markerGroup;
 
 function setZoom(zoom) {
   map.setZoom(zoom);
@@ -56,7 +56,7 @@ $(function() {
   });
 
   // setup a marker group
-  markers = WE.markerClusterGroup();
+  markerGroup = WE.layerGroup().addTo(map);
 
   //var baselayer = WE.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   var baselayer = WE.tileLayer('https://api.mapbox.com/styles/v1/mapbox/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
@@ -154,22 +154,18 @@ $(function() {
 });
 
 function loadData(callback) {
+  map.removeLayer(layerGroup)
+  markerGroup = WE.layerGroup().addTo(map);
   $.get('https://api.social-hound.com/'+topic+'/mentions/selected/true',{},function(data) {
         data.forEach(function(tweet) {
           if($(".carousel-inner").find(".carousel-item[data-id='"+tweet._id+"']").length==0) { 
               if(tweet.hasOwnProperty("geo")) {
-                  var marker = WE.marker(tweet.geo)
-                  // add marker
-                  markers.addLayer(marker);
+                  var marker = WE.marker(tweet.geo).addTo(markerGroup);
 
                   marker.bindPopup("<b>"+tweet.author.name+"</b><br><span style='font-size:10px;color:#999'>"+tweet.author.username+"</span>"+tweet.title+"<br />", {maxWidth: 150, closeButton: true}).openPopup();
               }    
           }
         })
-
-        // add the group to the map
-        // for more see https://github.com/Leaflet/Leaflet.markercluster
-        map.addLayer(markers);
         callback();
     });
 }
