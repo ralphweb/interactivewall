@@ -1,39 +1,15 @@
 var intervalCarousel = null;
 var autocarousel = false;
 var autotime = 0;
-/*
 var emoji = new EmojiConvertor();
 emoji.path = 'https://unicodey.com/js-emoji/build/emoji-data/img-emojione-64/';
 emoji.sheet = 'https://unicodey.com/js-emoji/build/emoji-data/sheet_emojione_64.png';
 emoji.use_sheet = true;
 emoji.replace_mode = 'unified';
 emoji.init_env();
-*/
 
 /* MAPA */
 var map;
-function init() {
-  map = WE.map('map', {
-    center: [36.057944835, -112.18688965],
-    zoom: 4,
-    dragging: true,
-    scrollWheelZoom: true
-  });
-
-  //var baselayer = WE.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  var baselayer = WE.tileLayer('https://api.mapbox.com/styles/v1/mapbox/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-    /*
-    tileSize: 256,
-    bounds: [[-85, -180], [85, 180]],
-    minZoom: 0,
-    maxZoom: 16,
-    */
-    id: 'satellite-streets-v9',
-    accessToken: 'pk.eyJ1Ijoic29jaWFsLWhvdW5kIiwiYSI6ImNqcnNqY2NsYTJhcnQ0Ymw5bWozMzJvNTQifQ.6NxHDad1T1y85SnK8i46xw',
-    attribution: '© OpenStreetMap contributors'/*,
-    tms: true*/
-  }).addTo(map);
-}
 
 function setZoom(zoom) {
   map.setZoom(zoom);
@@ -69,10 +45,30 @@ function panTo(coords) {
 }
 
 $(function() {
-    $(".carousel-inner").empty();
-  loadData(function() {
-    //
+  map = WE.map('map', {
+    center: [36.057944835, -112.18688965],
+    zoom: 4,
+    dragging: true,
+    scrollWheelZoom: true
   });
+
+  //var baselayer = WE.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  var baselayer = WE.tileLayer('https://api.mapbox.com/styles/v1/mapbox/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+    /*
+    tileSize: 256,
+    bounds: [[-85, -180], [85, 180]],
+    minZoom: 0,
+    maxZoom: 16,
+    */
+    id: 'satellite-streets-v9',
+    accessToken: 'pk.eyJ1Ijoic29jaWFsLWhvdW5kIiwiYSI6ImNqcnNqY2NsYTJhcnQ0Ymw5bWozMzJvNTQifQ.6NxHDad1T1y85SnK8i46xw',
+    attribution: '© OpenStreetMap contributors'/*,
+    tms: true*/
+  }).addTo(map);
+
+    $(".carousel-inner").empty();
+      loadData(function() {
+    });
 
     socket.on('connect', function() {
         console.log(topic);

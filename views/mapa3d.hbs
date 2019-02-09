@@ -22,7 +22,7 @@
 	      #layercontrol{position: absolute; top:10px; right: 10px;}
 	    </style>
 	  </head>
-	  <body onload="init()">
+	  <body>
 	    <div id="map"></div>
 	    <div id="buttons">
 	      <input type="button" value="Zoom to level 9" onclick="setZoom(9);"><br>
@@ -34,7 +34,7 @@
 	      <input type="button" value="Fly to God Bless You" onclick="panTo([-33.049118,-71.343796]);"><br>
 	      <input type="button" value="Add some markers & polygons" id="addmarkers" onclick="addSomeMarkers()"><br>
 	    </div>
-	    <!--script src="/emoji.js"></script-->
+	    <script src="/emoji.js"></script>
 	    <script src="/js/webglapi.js"></script>
 	    <script src="/js/socket.io.js"></script>
 	    <script src="/js/jquery.min.js"></script>
