@@ -188,7 +188,7 @@ function loadData(callback) {
                     $popup.find(".mention-card").removeClass("col-sm-12").addClass("col-sm-8");
                     $popup.prepend(`<div class="col-sm-4 image"><img src="`+tweet.image+`"></div>`);
                   }
-                  marker.bindPopup($popup.html(), {maxWidth: 1200, closeButton: false});
+                  marker.bindPopup($popup.html(), {maxWidth: 800, closeButton: false});
                   markerElements.push(marker);
               }    
           }

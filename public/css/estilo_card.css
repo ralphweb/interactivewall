@@ -551,6 +551,14 @@ p.card-text {
     font-size: 18pt !important;
 }
 
+.we-pp-content .image
+{
+	float: left;
+}
+.we-pp-content .image img
+{
+	width: 100%;
+}
 /*** noche ***/
 
 body.night {
