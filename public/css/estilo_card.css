@@ -74,13 +74,13 @@ body {
 	flex-direction: column;
 	min-width: 0;
 	word-wrap: break-word;
-	border: 1px solid #edf2f9;
+	border: none !important;
 	border-radius: .5rem;
 	background-color: #fff;
 	background-clip: border-box;
 	margin-bottom: 1.5rem;
 	border-color: #edf2f9;
-	box-shadow: 0 0.75rem 1.5rem rgba(18, 38, 63, .03);
+	box-shadow: none !important;
 }
 .avatar {
 	font-size: 1rem;
@@ -519,13 +519,32 @@ nav.trendig {
 	height: 25px;
 }
 .st0 {
-	fill:#12263F;
+	fill:#FFFFFF;
 }
 .st1 {
 	fill:#FA245D;
 }
 .st2 {
 	fill:#BC3252;
+}
+
+span.logo-lg.mr-2 {
+    left: 20px;
+    bottom: 20px;
+    position: fixed;
+    z-index: 10;
+}
+span.cesium-credit-textContainer {
+    margin-left: 20px;
+    bottom: 10px;
+    position: absolute;
+    width: 270px;
+}
+
+.we-pp-content {
+    display: inline-block;
+    margin: 0px -15px;
+    font: 12px/1.4 "Helvetica Neue",Arial,Helvetica,sans-serif;
 }
 
 /*** noche ***/

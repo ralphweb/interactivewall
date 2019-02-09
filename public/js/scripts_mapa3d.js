@@ -160,7 +160,7 @@ function loadData(callback) {
               if(tweet.hasOwnProperty("geo")) {
                   var marker = WE.marker(tweet.geo).addTo(map);
                   markerGroup.push(tweet.geo);
-                  marker.bindPopup(`<div class="col-sm-4 mention-card" data-id="`+tweet._id+`">
+                  marker.bindPopup(`<div class="col-sm-12 mention-card" data-id="`+tweet._id+`">
                   <div class="card">
                     <div class="card-body">
                       <div class="row align-items-center mb-3">
