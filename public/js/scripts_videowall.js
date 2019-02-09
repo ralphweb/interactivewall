@@ -97,12 +97,6 @@ function loadData(callback) {
 	$.get('https://api.social-hound.com/'+topic+'/mentions/selected/true',{},function(data) {
         data.forEach(function(tweet) {
         	if($(".carousel-inner").find(".carousel-item[data-id='"+tweet._id+"']").length==0) {
-                if(tweet.hasOwnProperty("geo")) {
-                    var marker = WE.marker(tweet.geo).addTo(map);
-                    marker.bindPopup("<b>"+tweet.author.name+"</b><br><span style='font-size:10px;color:#999'>"+tweet.author.username+"</span>"+tweet.title+"<br />", {maxWidth: 150, closeButton: true}).openPopup();
-                }
-                
-
         	    var $tweetObj = $(`
         	    	<div class="carousel-item" data-id="`+tweet._id+`" revised="true">
         	    		<div class="box-tuit">
