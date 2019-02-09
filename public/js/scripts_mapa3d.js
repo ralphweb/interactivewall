@@ -41,6 +41,14 @@ function flyToJapan() {
 
 function panTo(coords) {
   map.panTo(coords);
+  let popup = markerElements[index];
+
+  var px = map.project(popup._latlng); // find the pixel location on the map where the popup anchor is
+  console.log(px);
+  px.y -= popup._container.clientHeight/2 // find the height of the popup container, divide by 2, subtract from the Y axis of marker location
+  map.panTo(map.unproject(px),{animate: true}); // pan to new center
+
+  /*
   let scoords = [];
   if(!markerHasMedia[index]) {
     scoords[0] = coords[0]>0?coords[0]-24:coords[0]-24;
@@ -57,6 +65,7 @@ function panTo(coords) {
   }  
   map.panInsideBounds([coords, scoords],
           {heading: 0, tilt: 25, duration: 2});
+          */
 }
 
 $(function() {
@@ -80,14 +89,6 @@ $(function() {
     attribution: '© OpenStreetMap contributors'/*,
     tms: true*/
   }).addTo(map);
-
-    map.on('popupopen', function(e) {
-      console.log("POPUP OPEN");
-        var px = map.project(e.popup._latlng); // find the pixel location on the map where the popup anchor is
-        console.log(px);
-        px.y -= e.popup._container.clientHeight/2 // find the height of the popup container, divide by 2, subtract from the Y axis of marker location
-        map.panTo(map.unproject(px),{animate: true}); // pan to new center
-    });
 
     $(".carousel-inner").empty();
       loadData(function() {
@@ -148,7 +149,7 @@ $(function() {
                 markerElements[index].closePopup();
                 index = index<markerGroup.length-1?index+1:0;
                 markerElements[index].openPopup();
-                //panTo(markerGroup[index]);
+                panTo(markerGroup[index]);
             },time);
         } else if(!auto&&intervalCarousel!=null) {
             clearInterval(intervalCarousel);
