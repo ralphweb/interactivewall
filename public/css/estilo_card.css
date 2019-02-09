@@ -574,6 +574,10 @@ p.card-text {
 {
 	padding-left: 0px !important;
 }
+.we-pp-content .mention-card:not(.col-sm-5)
+{
+	padding-top: 10px !important;
+}
 /*** noche ***/
 
 body.night {
