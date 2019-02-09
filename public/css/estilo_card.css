@@ -543,7 +543,7 @@ span.cesium-credit-textContainer {
 
 .we-pp-content {
     display: inline-block;
-    margin: 0px -15px !important;
+    margin: -8px -15px !important;
     font: 12px/1.4 "Helvetica Neue",Arial,Helvetica,sans-serif;
 }
 
@@ -551,13 +551,28 @@ p.card-text {
     font-size: 18pt !important;
 }
 
-.we-pp-content .image
+.we-pp-wrapper
+{
+	overflow: hidden !important;
+}
+
+.we-pp-content .image,
+.we-pp-content .mention-card
 {
 	float: left;
 }
 .we-pp-content .image img
 {
 	width: 100%;
+}
+
+.we-pp-content .image
+{
+	padding: 0px !important;
+}
+.we-pp-content .col-sm-7.mention-card
+{
+	padding-left: 0px !important;
 }
 /*** noche ***/
 
