@@ -48,11 +48,11 @@ function panTo(coords) {
   } else {
     if(markerHasMedia[index]=="image") {
       scoords[0] = coords[0]>0?coords[0]-24:coords[0]-24;
-      scoords[1] = coords[1]>0?coords[1]-52:coords[1]-52;
+      scoords[1] = coords[1]>0?coords[1]-92:coords[1]-92;
     }
     if(markerHasMedia[index]=="video") {
       scoords[0] = coords[0]>0?coords[0]-24:coords[0]-24;
-      scoords[1] = coords[1]>0?coords[1]-32:coords[1]-32;
+      scoords[1] = coords[1]>0?coords[1]-92:coords[1]-92;
     }
   }  
   map.panInsideBounds([coords, scoords],
@@ -197,8 +197,8 @@ function loadData(callback) {
 
                   
                   if(tweet.hasOwnProperty("image")) {
-                    $popup.find(".mention-card").removeClass("col-sm-12").addClass("col-sm-8");
-                    $popup.prepend(`<div class="col-sm-4 image"><img src="`+tweet.image+`"></div>`);
+                    $popup.find(".mention-card").removeClass("col-sm-12").addClass("col-sm-5");
+                    $popup.prepend(`<div class="col-sm-7 image"><img src="`+tweet.image+`"></div>`);
                     markerHasMedia.push("image");
                   } else {
                     markerHasMedia.push(false);
