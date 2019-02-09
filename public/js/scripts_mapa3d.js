@@ -13,6 +13,7 @@ var mentions;
 /* MAPA */
 var map;
 var markerGroup = [];
+var index = 0;
 
 function setZoom(zoom) {
   map.setZoom(zoom);
@@ -37,8 +38,6 @@ function flyToJapan() {
 }
 
 function panTo(coords) {
-  var marker = WE.marker(coords).addTo(map);
-  marker.bindPopup("<b>Hello world!</b><br>I am a popup.<br /><span style='font-size:10px;color:#999'>Tip: Another popup is hidden in Cairo..</span>", {maxWidth: 150, closeButton: true}).openPopup();
   map.panTo(coords);
   let scoords = [];
   scoords[0] = coords[0]>0?coords[0]-24:coords[0]-24;
@@ -79,8 +78,9 @@ $(function() {
     });
 
   socket.on('carouselnext',function(msg) {
-        console.log("next");
-    $('.carousel').carousel('next');
+    console.log('next');
+        index = index<markerGroup.length-1?index+1:0;
+        panTo(markerGroup[index]);
   });
 
     socket.on('togglecontador',function(msg) {
@@ -98,12 +98,12 @@ $(function() {
     });
 
   socket.on('carouselprev',function(msg) {
-        console.log("prev");
-    $('.carousel').carousel('prev');
+    console.log('prev');
+    index = index>0?index-1:markerGroup.length-1;
+    panTo(markerGroup[index]);
   });
 
     socket.on('carouselcurrentreq',function(msg) {
-        var index = $(".carousel-item.active").index();
         socket.emit('carouselcurrentres',{index:index,autocarousel:autocarousel,time:autotime,topic:topic});
     });
 
@@ -120,49 +120,38 @@ $(function() {
         if(auto&&intervalCarousel==null) {
             autocarousel = true;
             intervalCarousel = setInterval(function() {
-                $('.carousel').carousel('next');
+                index = index<markerGroup.length-1?index+1:0;
+                panTo(markerGroup[index]);
             },time);
         } else if(!auto&&intervalCarousel!=null) {
             clearInterval(intervalCarousel);
             autocarousel = false;
             intervalCarousel = null;
-            var index = $(".carousel-item.active").index();
             socket.emit('carouselcurrentres',{index:index,autocarousel:autocarousel,time:autotime,topic:topic});
         }
     })
 
   socket.on('newtweet',function(msg) {
-    loadData(function() {
-            //
-    })
+    location.reload();
   });
 
     socket.on('deletetweet',function(msg) {
-        loadData(function() {
-            //
-        })
+        location.reload();
     });
 
     socket.on('updatetweet',function(msg) {
-        loadData(function() {
-            //
-        })
+        location.reload();
     });
 });
 
 function loadData(callback) {
-  if(markerGroup.length>0) {
-    markerGroup.forEach(function(mark) {
-      map.removeLayer(mark);
-    });
-  }
   markerGroup = [];
   $.get('https://api.social-hound.com/'+topic+'/mentions/selected/true',{},function(data) {
         data.forEach(function(tweet) {
           if($(".carousel-inner").find(".carousel-item[data-id='"+tweet._id+"']").length==0) { 
               if(tweet.hasOwnProperty("geo")) {
                   var marker = WE.marker(tweet.geo).addTo(map);
-                  markerGroup.push(marker);
+                  markerGroup.push(tweet.geo);
                   marker.bindPopup("<b>"+tweet.author.name+"</b><br><span style='font-size:10px;color:#999'>"+tweet.author.username+"</span>"+tweet.title+"<br />", {maxWidth: 150, closeButton: true}).openPopup();
               }    
           }
