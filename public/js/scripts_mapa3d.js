@@ -178,7 +178,7 @@ function loadData(callback) {
                       <p class="card-text">`+tweet.title+`</p>
                     </div>
                   </div>
-                </div>`, {maxWidth: 500, closeButton: false});
+                </div>`, {maxWidth: 700, closeButton: false});
                   markerElements.push(marker);
               }    
           }

@@ -543,8 +543,12 @@ span.cesium-credit-textContainer {
 
 .we-pp-content {
     display: inline-block;
-    margin: 0px -15px;
+    margin: 0px -15px !important;
     font: 12px/1.4 "Helvetica Neue",Arial,Helvetica,sans-serif;
+}
+
+p.card-text {
+    font-size: 18pt !important;
 }
 
 /*** noche ***/
