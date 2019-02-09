@@ -160,7 +160,7 @@ function loadData(callback) {
               if(tweet.hasOwnProperty("geo")) {
                   var marker = WE.marker(tweet.geo).addTo(map);
                   markerGroup.push(tweet.geo);
-                  let $popup = `
+                  let $popup = $(`
                 <div class="row">
                   <div class="col-sm-12 mention-card" data-id="`+tweet._id+`">
                     <div class="card">
@@ -181,7 +181,7 @@ function loadData(callback) {
                       </div>
                     </div>
                   </div>
-                </div>`;
+                </div>`);
 
                   
                   if(tweet.hasOwnProperty("image")) {
