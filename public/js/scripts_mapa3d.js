@@ -42,6 +42,8 @@ function flyToJapan() {
 
 function panTo(coords) {
   let popup = markerElements[index];
+  coords[0] = parseFloat(coords[0]);
+  coords[1] = parseFloat(coords[1]);
   let scoords = [];
   if(!markerHasMedia[index]) {
     scoords[0] = coords[0]>0?coords[0]-24:coords[0]-24;
