@@ -160,25 +160,35 @@ function loadData(callback) {
               if(tweet.hasOwnProperty("geo")) {
                   var marker = WE.marker(tweet.geo).addTo(map);
                   markerGroup.push(tweet.geo);
-                  marker.bindPopup(`<div class="col-sm-12 mention-card" data-id="`+tweet._id+`">
-                  <div class="card">
-                    <div class="card-body">
-                      <div class="row align-items-center mb-3">
-                        <div class="col-auto">
-                          <a class="avatar avatar-sm" href="profile-posts.html"><img alt="..." class="avatar-img rounded-circle" src="`+tweet.author.profile_pic+`"></a>
+                  let $popup = `
+                <div class="row">
+                  <div class="col-sm-12 mention-card" data-id="`+tweet._id+`">
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="row align-items-center mb-3">
+                          <div class="col-auto">
+                            <a class="avatar avatar-sm" href="profile-posts.html"><img alt="..." class="avatar-img rounded-circle" src="`+tweet.author.profile_pic+`"></a>
+                          </div>
+                          <div class="col ml--9">
+                            <h5 class="card-title m-0 p-0">`+tweet.author.name+`</h5>
+                            <h6 class="card-subtitle text-muted m-0 p-0" style="`+(tweet.author.username==undefined?"display:none":"")+`">`+tweet.author.username+`</h6>
+                          </div>
+                          <div class="col-auto">
+                            <h5 class="bg-twitter"><a href="`+tweet.url+`" target="_blank"><i class="fab fa-`+tweet.platform+`"></i></a></h5>
+                          </div>
                         </div>
-                        <div class="col ml--9">
-                          <h5 class="card-title m-0 p-0">`+tweet.author.name+`</h5>
-                          <h6 class="card-subtitle text-muted m-0 p-0" style="`+(tweet.author.username==undefined?"display:none":"")+`">`+tweet.author.username+`</h6>
-                        </div>
-                        <div class="col-auto">
-                          <h5 class="bg-twitter"><a href="`+tweet.url+`" target="_blank"><i class="fab fa-`+tweet.platform+`"></i></a></h5>
-                        </div>
+                        <p class="card-text">`+tweet.title+`</p>
                       </div>
-                      <p class="card-text">`+tweet.title+`</p>
                     </div>
                   </div>
-                </div>`, {maxWidth: 700, closeButton: false});
+                </div>`;
+
+                  
+                  if(tweet.hasOwnProperty("image")) {
+                    $popup.find(".mention-card").removeClass("col-sm-12").addClass("col-sm-8");
+                    $popup.prepend(`<div class="col-sm-4 image"><img src="`+tweet.image+`"></div>`);
+                  }
+                  marker.bindPopup($popup, {maxWidth: 1200, closeButton: false});
                   markerElements.push(marker);
               }    
           }
