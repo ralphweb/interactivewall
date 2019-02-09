@@ -43,12 +43,16 @@ function panTo(coords) {
   map.panTo(coords);
   let popup = markerElements[index];
 
-  var px = map.project(popup._latlng); // find the pixel location on the map where the popup anchor is
-  console.log(px);
-  px.y -= popup._container.clientHeight/2 // find the height of the popup container, divide by 2, subtract from the Y axis of marker location
-  map.panTo(map.unproject(px),{animate: true}); // pan to new center
+  try {
+    var px = popup._latlng; // find the pixel location on the map where the popup anchor is
+    console.log(px);
+    var popupHeight = popup._container.clientHeight // find the height of the popup container, divide by 2, subtract from the Y axis of marker location
+    console.log(popupHeight);
+  } catch(e) {
+    console.log(e);
+  }
+  
 
-  /*
   let scoords = [];
   if(!markerHasMedia[index]) {
     scoords[0] = coords[0]>0?coords[0]-24:coords[0]-24;
@@ -65,7 +69,6 @@ function panTo(coords) {
   }  
   map.panInsideBounds([coords, scoords],
           {heading: 0, tilt: 25, duration: 2});
-          */
 }
 
 $(function() {
