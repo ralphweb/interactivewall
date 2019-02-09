@@ -58,7 +58,7 @@ function panTo(coords) {
     scoords[1] = coords[1]>0?coords[1]-32:coords[1]-32;
   } else {
     if(markerHasMedia[index]=="image") {
-      coords[0] = coords[0]-24;
+      coords[0] = coords[0]+34;
       scoords[0] = coords[0]>0?coords[0]-24:coords[0]-24;
       scoords[1] = coords[1]>0?coords[1]-32:coords[1]-32;
     }
