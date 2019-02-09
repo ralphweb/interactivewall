@@ -47,12 +47,12 @@ function panTo(coords) {
     scoords[1] = coords[1]>0?coords[1]-32:coords[1]-32;
   } else {
     if(markerHasMedia[index]=="image") {
-      scoords[0] = coords[0]>0?coords[0]-34:coords[0]-34;
-      scoords[1] = coords[1]>0?coords[1]-72:coords[1]-72;
+      scoords[0] = coords[0]>0?coords[0]-32:coords[0]-32;
+      scoords[1] = coords[1]>0?coords[1]-42:coords[1]-42;
     }
     if(markerHasMedia[index]=="video") {
       scoords[0] = coords[0]>0?coords[0]-24:coords[0]-24;
-      scoords[1] = coords[1]>0?coords[1]-92:coords[1]-92;
+      scoords[1] = coords[1]>0?coords[1]-32:coords[1]-32;
     }
   }  
   map.panInsideBounds([coords, scoords],
@@ -200,10 +200,11 @@ function loadData(callback) {
                     $popup.find(".mention-card").removeClass("col-sm-12").addClass("col-sm-5");
                     $popup.prepend(`<div class="col-sm-7 image"><img src="`+tweet.image+`"></div>`);
                     markerHasMedia.push("image");
+                    marker.bindPopup($popup.html(), {maxWidth: 800, closeButton: false});
                   } else {
                     markerHasMedia.push(false);
+                    marker.bindPopup($popup.html(), {maxWidth: 600, closeButton: false});
                   }
-                  marker.bindPopup($popup.html(), {maxWidth: 800, closeButton: false});
                   markerElements.push(marker);
               }    
           }
