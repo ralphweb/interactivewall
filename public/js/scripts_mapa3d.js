@@ -212,7 +212,7 @@ function loadData(callback) {
                     marker.bindPopup($popup.html(), {maxWidth: 800, closeButton: false});
                   } else {
                     markerHasMedia.push(false);
-                    marker.bindPopup($popup.html(), {maxWidth: 800, closeButton: false});
+                    marker.bindPopup($popup.html(), {maxWidth: 600, closeButton: false});
                   }
                   markerElements.push(marker);
               }    
