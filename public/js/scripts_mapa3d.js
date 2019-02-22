@@ -47,7 +47,7 @@ function panTo(coords) {
   let scoords = [];
   if(!markerHasMedia[index]) {
     coords[0] = coords[0]+8;
-    coords[1] = coords[1];
+    coords[1] = coords[1]+3;
     scoords[0] = coords[0]>0?coords[0]-24:coords[0]-24;
     scoords[1] = coords[1]>0?coords[1]-32:coords[1]-32;
   } else {
