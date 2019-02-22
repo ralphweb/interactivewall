@@ -387,7 +387,7 @@ i.material-icons {
     background-size: cover;
     background-repeat: no-repeat;
     position: absolute;
-    top: 0;
+    top: 10vh;
 }
 .menciones {
   margin-top: 15vh;
@@ -423,6 +423,10 @@ i.material-icons {
 .lascondes p.card-text {
     margin: auto;
     max-width: 60%;
+}
+
+video {
+  object-fit: fill;
 }
 
 @media screen and (min-width: 768px) { 
