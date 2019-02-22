@@ -515,31 +515,6 @@ nav.trendig {
 	border-left: 1px solid;
     padding-left: 8px;
 }
-.logo-lg svg {
-	height: 25px;
-}
-.st0 {
-	fill:#FFFFFF;
-}
-.st1 {
-	fill:#FA245D;
-}
-.st2 {
-	fill:#BC3252;
-}
-
-span.logo-lg.mr-2 {
-    left: 20px;
-    bottom: 20px;
-    position: fixed;
-    z-index: 10;
-}
-span.cesium-credit-textContainer {
-    margin-left: 20px;
-    bottom: 10px;
-    position: absolute;
-    width: 270px;
-}
 
 .we-pp-content {
     display: inline-block;
