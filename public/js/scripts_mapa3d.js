@@ -13,6 +13,7 @@ window.offset = 80;
 
 /* MAPA */
 var map;
+var myIcon;
 var markerGroup = [];
 var markerElements = [];
 var markerHasMedia = [];
@@ -77,6 +78,8 @@ $(function() {
     dragging: true,
     scrollWheelZoom: true
   });
+
+  myIcon = WE.divIcon({className: 'my-div-icon'});
 
   //var baselayer = WE.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   var baselayer = WE.tileLayer('https://api.mapbox.com/styles/v1/mapbox/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
