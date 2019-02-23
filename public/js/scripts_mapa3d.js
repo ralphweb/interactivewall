@@ -43,6 +43,7 @@ function flyToJapan() {
 }
 
 function panTo(coords) {
+  if(index==0) map.setView(globalcenter,globalzoom);
   let popup = markerElements[index];
   coords[0] = parseFloat(coords[0]);
   coords[1] = parseFloat(coords[1]);
@@ -108,13 +109,7 @@ $(function() {
     markerElements[index].closePopup();
         index = index<markerGroup.length-1?index+1:0;
         markerElements[index].openPopup();
-        if(index==0) {
-          map.panTo(globalcenter);
-          setTimeout(function() {
-            panTo(markerGroup[index]);
-          },1000);
-        } else
-          panTo(markerGroup[index]);
+        panTo(markerGroup[index]);
   });
 
     socket.on('togglecontador',function(msg) {
@@ -136,13 +131,7 @@ $(function() {
     markerElements[index].closePopup();
     index = index>0?index-1:markerGroup.length-1;
     markerElements[index].openPopup();
-    if(index==markerGroup.length-1) {
-      map.panTo(globalcenter);
-      setTimeout(function() {
-        panTo(markerGroup[index]);
-      },1000);
-    } else
-      panTo(markerGroup[index]);
+    panTo(markerGroup[index]);
   });
 
     socket.on('carouselcurrentreq',function(msg) {
@@ -165,13 +154,7 @@ $(function() {
                 markerElements[index].closePopup();
                 index = index<markerGroup.length-1?index+1:0;
                 markerElements[index].openPopup();
-                if(index==0) {
-                  map.panTo(globalcenter);
-                  setTimeout(function() {
-                    panTo(markerGroup[index]);
-                  },1000);
-                } else
-                  panTo(markerGroup[index]);
+                panTo(markerGroup[index]);
             },time);
         } else if(!auto&&intervalCarousel!=null) {
             clearInterval(intervalCarousel);
