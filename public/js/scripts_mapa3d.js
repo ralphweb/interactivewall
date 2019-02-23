@@ -13,7 +13,6 @@ window.offset = 80;
 
 /* MAPA */
 var map;
-var myIcon;
 var markerGroup = [];
 var markerElements = [];
 var markerHasMedia = [];
@@ -78,8 +77,6 @@ $(function() {
     dragging: true,
     scrollWheelZoom: true
   });
-
-  myIcon = WE.icon({iconUrl: '/images/icon.png'});
 
   //var baselayer = WE.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   var baselayer = WE.tileLayer('https://api.mapbox.com/styles/v1/mapbox/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
@@ -184,7 +181,7 @@ function loadData(callback) {
         data.forEach(function(tweet) {
           if($(".carousel-inner").find(".carousel-item[data-id='"+tweet._id+"']").length==0) { 
               if(tweet.hasOwnProperty("geo")) {
-                  var marker = WE.marker(tweet.geo).addTo(map);
+                  var marker = WE.marker(tweet.geo,'/images/icon.png').addTo(map);
                   markerGroup.push(tweet.geo);
                   let $popup = $(`
                 <div class="row">
