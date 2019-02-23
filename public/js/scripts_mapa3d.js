@@ -43,7 +43,6 @@ function flyToJapan() {
 }
 
 function panTo(coords) {
-  if(index==0) map.setView(globalcenter,globalzoom);
   let popup = markerElements[index];
   coords[0] = parseFloat(coords[0]);
   coords[1] = parseFloat(coords[1]);
