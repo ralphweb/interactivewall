@@ -13,6 +13,8 @@ window.offset = 80;
 
 /* MAPA */
 var map;
+var globalcenter = [36.057944835, -112.18688965];
+var globalzoom = 4;
 var markerGroup = [];
 var markerElements = [];
 var markerHasMedia = [];
@@ -72,8 +74,8 @@ function panTo(coords) {
 
 $(function() {
   map = WE.map('map', {
-    center: [36.057944835, -112.18688965],
-    zoom: 4,
+    center: globalcenter,
+    zoom: globalzoom,
     dragging: true,
     scrollWheelZoom: true
   });
@@ -106,7 +108,13 @@ $(function() {
     markerElements[index].closePopup();
         index = index<markerGroup.length-1?index+1:0;
         markerElements[index].openPopup();
-        panTo(markerGroup[index]);
+        if(index==0) {
+          map.panTo(globalcenter);
+          setTimeout(function() {
+            panTo(markerGroup[index]);
+          },1000);
+        } else
+          panTo(markerGroup[index]);
   });
 
     socket.on('togglecontador',function(msg) {
@@ -128,7 +136,13 @@ $(function() {
     markerElements[index].closePopup();
     index = index>0?index-1:markerGroup.length-1;
     markerElements[index].openPopup();
-    panTo(markerGroup[index]);
+    if(index==markerGroup.length-1) {
+      map.panTo(globalcenter);
+      setTimeout(function() {
+        panTo(markerGroup[index]);
+      },1000);
+    } else
+      panTo(markerGroup[index]);
   });
 
     socket.on('carouselcurrentreq',function(msg) {
@@ -151,7 +165,13 @@ $(function() {
                 markerElements[index].closePopup();
                 index = index<markerGroup.length-1?index+1:0;
                 markerElements[index].openPopup();
-                panTo(markerGroup[index]);
+                if(index==0) {
+                  map.panTo(globalcenter);
+                  setTimeout(function() {
+                    panTo(markerGroup[index]);
+                  },1000);
+                } else
+                  panTo(markerGroup[index]);
             },time);
         } else if(!auto&&intervalCarousel!=null) {
             clearInterval(intervalCarousel);
