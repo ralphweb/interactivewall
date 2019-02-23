@@ -79,7 +79,7 @@ $(function() {
     scrollWheelZoom: true
   });
 
-  myIcon = WE.divIcon({className: 'my-div-icon'});
+  myIcon = WE.icon({iconUrl: '/images/icon.png'});
 
   //var baselayer = WE.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   var baselayer = WE.tileLayer('https://api.mapbox.com/styles/v1/mapbox/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
