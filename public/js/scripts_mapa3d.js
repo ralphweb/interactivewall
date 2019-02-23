@@ -195,6 +195,7 @@ function loadData(callback) {
                           <div class="col ml--9">
                             <h5 class="card-title m-0 p-0">`+tweet.author.name+`</h5>
                             <h6 class="card-subtitle text-muted m-0 p-0" style="`+(tweet.author.username==undefined?"display:none":"")+`">`+tweet.author.username+`</h6>
+                            <h6 class="card-subtitle text-muted m-0 p-0 location" style="`+(tweet.location==undefined?"display:none":"")+`"><i class="fas fa-map-marker-alt"></i>`+tweet.location+`</h6>
                           </div>
                           <div class="col-auto">
                             <h5 class="bg-twitter"><a href="`+tweet.url+`" target="_blank"><i class="fab fa-`+tweet.platform+`"></i></a></h5>
