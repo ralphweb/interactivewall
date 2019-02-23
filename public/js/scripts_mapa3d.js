@@ -47,13 +47,13 @@ function panTo(coords) {
   let scoords = [];
   if(!markerHasMedia[index]) {
     coords[0] = coords[0]+8;
-    coords[1] = coords[1]+5;
+    coords[1] = coords[1]+8;
     scoords[0] = coords[0]>0?coords[0]-24:coords[0]-24;
     scoords[1] = coords[1]>0?coords[1]-32:coords[1]-32;
   } else {
     if(markerHasMedia[index]=="image") {
       coords[0] = coords[0]+14;
-      coords[1] = coords[1]+3;
+      coords[1] = coords[1]+8;
       scoords[0] = coords[0]>0?coords[0]-24:coords[0]-24;
       scoords[1] = coords[1]>0?coords[1]-32:coords[1]-32;
     }
@@ -67,7 +67,7 @@ function panTo(coords) {
   console.log("scoords"); 
   console.log(scoords); 
   map.panInsideBounds([coords, scoords],
-          {heading: 0, tilt: 25, duration: 2});
+          {heading: 0, tilt: 5, duration: 2});
 }
 
 $(function() {
