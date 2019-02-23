@@ -201,7 +201,7 @@ function loadData(callback) {
                           </div>
                         </div>
                         <p class="card-text">`+tweet.title+`</p>
-                        <h6 class="card-subtitle text-muted m-0 p-0 location" style="`+(tweet.location==undefined?"display:none":"")+`"><i class="fas fa-map-marker-alt"></i>&bnsp;`+tweet.location+`</h6>
+                        <h6 class="card-subtitle text-muted m-0 p-0 location" style="`+(tweet.location==undefined?"display:none":"")+`"><i class="fas fa-map-marker-alt"></i>&nbsp;`+tweet.location+`</h6>
                       </div>
                     </div>
                   </div>
