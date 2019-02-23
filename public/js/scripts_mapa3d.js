@@ -18,7 +18,7 @@ var globalzoom = 4;
 var markerGroup = [];
 var markerElements = [];
 var markerHasMedia = [];
-var index = 0;
+var index = -1;
 
 function setZoom(zoom) {
   map.setZoom(zoom);
@@ -105,7 +105,7 @@ $(function() {
 
   socket.on('carouselnext',function(msg) {
     console.log('next');
-    markerElements[index].closePopup();
+    if(index>=0) markerElements[index].closePopup();
         index = index<markerGroup.length-1?index+1:0;
         markerElements[index].openPopup();
         panTo(markerGroup[index]);
@@ -127,7 +127,7 @@ $(function() {
 
   socket.on('carouselprev',function(msg) {
     console.log('prev');
-    markerElements[index].closePopup();
+    if(index>=0) markerElements[index].closePopup();
     index = index>0?index-1:markerGroup.length-1;
     markerElements[index].openPopup();
     panTo(markerGroup[index]);
@@ -150,7 +150,7 @@ $(function() {
         if(auto&&intervalCarousel==null) {
             autocarousel = true;
             intervalCarousel = setInterval(function() {
-                markerElements[index].closePopup();
+                if(index>=0) markerElements[index].closePopup();
                 index = index<markerGroup.length-1?index+1:0;
                 markerElements[index].openPopup();
                 panTo(markerGroup[index]);
