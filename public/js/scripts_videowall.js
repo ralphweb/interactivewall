@@ -37,7 +37,7 @@ $(function() {
 
     socket.on('count',function(msg) {
         console.log('count');
-        $('.container.top').find("h1 text").text(formatNumber.new(msg.count));
+        $('.container.top').find(".count").text(formatNumber.new(msg.count));
     });
 
 	socket.on('carouselprev',function(msg) {

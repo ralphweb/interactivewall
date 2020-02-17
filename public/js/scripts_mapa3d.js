@@ -183,7 +183,7 @@ function loadData(callback) {
         data.forEach(function(tweet) {
           if($(".carousel-inner").find(".carousel-item[data-id='"+tweet._id+"']").length==0) { 
               if(tweet.hasOwnProperty("geo")) {
-                  var marker = WE.marker(tweet.geo,'/images/icon.png').addTo(map);
+                  var marker = WE.marker(tweet.geo,'/images/football_icon.png').addTo(map);
                   markerGroup.push(tweet.geo);
                   let $popup = $(`
                 <div class="row">

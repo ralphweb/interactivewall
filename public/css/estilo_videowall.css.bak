@@ -384,24 +384,36 @@ i.material-icons {
     width: 50vw;
     height: 50vh;
     background-position: center center;
-    background-size: contain;
+    background-size: cover;
     background-repeat: no-repeat;
     position: absolute;
     top: 10vh;
 }
+/*
 .logo-elcav {
-    width: 165px;
-    height: 165px;
+    width: 200px;
+    height: 200px;
     background-position: center center;
-    background-size: contain;
+    background-size: cover;
     background-repeat: no-repeat;
     position: absolute;
-    top: 30px;
-    left: 29px;
+    top: 20px;
+    left: 0vw;
+}
+*/
+.logo-elcav {
+    width: 200px;
+    height: 170px;
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 20px;
+    left: 10px;
 }
 .menciones {
   margin-top: 15vh;
-  font-size: 150pt !important;
+  font-size: 180pt !important;
   font-family: 'BebasNeue';
 }
 .contador-subtitulo {
@@ -422,7 +434,7 @@ i.material-icons {
 }
 
 .lascondes h3.contador-subtitulo {
-    margin-bottom: 6vh;
+    margin-bottom: -10vh;
     background: transparent;
 }
 
@@ -482,34 +494,4 @@ span.cesium-credit-textContainer {
     bottom: 10px;
     position: absolute;
     width: 270px;
-}
-
-/* TODOS SOMOS */
-.todossomos-video
-{
-  width: 1000px;
-  margin-left: -352px;
-  height: 620px;
-  margin-bottom: -3px;
-}
-
-.todossomos-video2
-{
-  margin-left: -252px;
-}
-
-.mention-card
-{
-  height: 620px;
-}
-
-.card
-{
-  height: 100%;
-  border-radius: 0px !important;
-}
-
-.bg-whatsapp
-{
-  color: 25d366;
 }
