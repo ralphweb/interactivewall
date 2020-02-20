@@ -60,7 +60,7 @@ function panTo(coords) {
       scoords[1] = coords[1]>0?coords[1]-32:coords[1]-32;
     }
     if(markerHasMedia[index]=="video") {
-      coords[0] = coords[0]+24; //eje y
+      coords[0] = coords[0]+22; //eje y
       coords[1] = coords[1]+13; //eje x
       scoords[0] = coords[0]>0?coords[0]-24:coords[0]-24;
       scoords[1] = coords[1]>0?coords[1]-32:coords[1]-32;
