@@ -60,6 +60,8 @@ function panTo(coords) {
       scoords[1] = coords[1]>0?coords[1]-32:coords[1]-32;
     }
     if(markerHasMedia[index]=="video") {
+      coords[0] = coords[0]+24; //eje y
+      coords[1] = coords[1]+13; //eje x
       scoords[0] = coords[0]>0?coords[0]-24:coords[0]-24;
       scoords[1] = coords[1]>0?coords[1]-32:coords[1]-32;
     }
@@ -95,7 +97,7 @@ $(function() {
   }).addTo(map);
 
     $(".carousel-inner").empty();
-      loadData(function() {
+    loadData(function() {
     });
 
     socket.on('connect', function() {
@@ -105,10 +107,25 @@ $(function() {
 
   socket.on('carouselnext',function(msg) {
     console.log('next');
-    if(index>=0) markerElements[index].closePopup();
-        index = index<markerGroup.length-1?index+1:0;
-        markerElements[index].openPopup();
-        panTo(markerGroup[index]);
+    if(index>=0) {
+      try {
+        $("video:visible")[0].pause();
+        $("video:visible")[0].currentTime = 0;
+      } catch(e) {
+        console.log(e);
+      }
+      markerElements[index].closePopup();
+    }
+    index = index<markerGroup.length-1?index+1:0;
+    markerElements[index].openPopup();
+    panTo(markerGroup[index]);
+    try {
+      setTimeout(function() {
+        $("video:visible")[0].play();
+      },2000);
+    } catch(e) {
+      console.log(e);
+    }
   });
 
     socket.on('togglecontador',function(msg) {
@@ -127,10 +144,25 @@ $(function() {
 
   socket.on('carouselprev',function(msg) {
     console.log('prev');
-    if(index>=0) markerElements[index].closePopup();
+    if(index>=0) {
+      try {
+        $("video:visible")[0].pause();
+        $("video:visible")[0].currentTime = 0;
+      } catch(e) {
+        console.log(e);
+      }
+      markerElements[index].closePopup();
+    }
     index = index>0?index-1:markerGroup.length-1;
     markerElements[index].openPopup();
     panTo(markerGroup[index]);
+    try {
+      setTimeout(function() {
+        $("video:visible")[0].play();
+      },2000);
+    } catch(e) {
+      console.log(e);
+    }
   });
 
     socket.on('carouselcurrentreq',function(msg) {
@@ -176,29 +208,52 @@ $(function() {
     });
 });
 
+function next() {
+  console.log('next');
+  if(index>=0) { 
+    try {
+      $("video:visible")[0].pause();
+      $("video:visible")[0].currentTime = 0;
+    } catch(e) {
+      console.log(e);
+    }
+    markerElements[index].closePopup();
+  }
+  index = index<markerGroup.length-1?index+1:0;
+  markerElements[index].openPopup();
+  panTo(markerGroup[index]);
+  try {
+    setTimeout(function() {
+      $("video:visible")[0].play();
+    },2000);
+  } catch(e) {
+    console.log(e);
+  }
+}
+
 function loadData(callback) {
   markerGroup = [];
   markerElements = [];
-  $.get('https://api.social-hound.com/'+topic+'/mentions/selected/true',{},function(data) {
+  $.get('https://api.social-hound.com/'+topic+'/mentions/selected/true/hidden/false',{},function(data) {
         data.forEach(function(tweet) {
           if($(".carousel-inner").find(".carousel-item[data-id='"+tweet._id+"']").length==0) { 
               if(tweet.hasOwnProperty("geo")) {
-                  var marker = WE.marker(tweet.geo,'/images/football_icon.png').addTo(map);
+                  var marker = WE.marker(tweet.geo,'/images/icon_back.png').addTo(map);
                   markerGroup.push(tweet.geo);
                   let $popup = $(`
                 <div class="row">
-                  <div class="col-sm-12 mention-card" data-id="`+tweet._id+`">
+                  <div class="col-sm-12 mention-card newpopup" data-id="`+tweet._id+`">
                     <div class="card">
                       <div class="card-body">
-                        <div class="row align-items-center mb-3">
-                          <div class="col-auto">
+                        <div class="row align-items-center mb-3 card-head">
+                          <div class="col-avatar">
                             <a class="avatar avatar-sm" href="profile-posts.html"><img alt="..." class="avatar-img rounded-circle" src="`+tweet.author.profile_pic+`"></a>
                           </div>
                           <div class="col ml--9">
                             <h5 class="card-title m-0 p-0">`+tweet.author.name+`</h5>
                             <h6 class="card-subtitle text-muted m-0 p-0" style="`+(tweet.author.username==undefined?"display:none":"")+`">`+tweet.author.username+`</h6>
                           </div>
-                          <div class="col-auto">
+                          <div class="col-auto platform">
                             <h5 class="bg-twitter"><a href="`+tweet.url+`" target="_blank"><i class="fab fa-`+tweet.platform+`"></i></a></h5>
                           </div>
                         </div>
@@ -210,7 +265,12 @@ function loadData(callback) {
                 </div>`);
 
                   
-                  if(tweet.hasOwnProperty("image")) {
+                  if(tweet.hasOwnProperty("video")){
+                    $popup.find(".mention-card").removeClass("col-sm-12").addClass("col-sm-5");
+                    $popup.prepend(`<video type="video/mp4" ref="video" src="`+tweet.video+`" autoplay></video>`);
+                    markerHasMedia.push("video");
+                    marker.bindPopup($popup.html(), {maxWidth: 1120, closeButton: false});
+                  } else if(tweet.hasOwnProperty("image")) {
                     $popup.find(".mention-card").removeClass("col-sm-12").addClass("col-sm-5");
                     $popup.prepend(`<div class="col-sm-7 image"><img src="`+tweet.image+`"></div>`);
                     markerHasMedia.push("image");
