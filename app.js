@@ -9,7 +9,6 @@ var index = require('./routes/index');
 
 var app = express();
 var http = require('http').Server(app);
-var io = require('socket.io')(http);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -61,66 +60,6 @@ app.use(function (req, res, next) {
 
     // Pass to next layer of middleware
     next();
-});
-
-var axisList;
-
-io.on('connection', function(socket){
-  console.log('a user connected');
-  socket.on('room', function(room) {
-    console.log(room);
-      socket.join(room);
-  });
-  socket.on('disconnect', function(){
-      console.log('user disconnected');
-    });
-  socket.on('newtweet', function(msg){
-      console.log(msg);
-      io.in(msg.topic).emit('newtweet', msg);
-    });
-  socket.on('updatetweet', function(msg){
-      console.log(msg);
-      io.in(msg.topic).emit('updatetweet', msg);
-    });
-  socket.on('toggletwitter', function(msg){
-      console.log(msg);
-      io.in(msg.topic).emit('toggletwitter', msg);
-    });
-  socket.on('deletetweet', function(msg){
-      console.log(msg);
-      io.in(msg.topic).emit('deletetweet', msg);
-    });
-  socket.on('carouselnext', function(msg){
-      console.log("carouselnext");
-      io.in(msg.topic).emit('carouselnext', msg);
-    });
-  socket.on('carouselprev', function(msg){
-      console.log("carouselprev");
-      io.in(msg.topic).emit('carouselprev', msg);
-    });
-  socket.on('carouselcurrentreq', function(msg){
-      io.in(msg.topic).emit('carouselcurrentreq', msg);
-    });
-  socket.on('carouselcurrentres', function(msg){
-      io.in(msg.topic).emit('carouselcurrentres', msg);
-    });
-  socket.on('carouselmedia', function(msg){
-      io.in(msg.topic).emit('carouselmedia', msg);
-    });
-  socket.on('carouselauto', function(msg){
-      io.in(msg.topic).emit('carouselauto', msg);
-    });
-  socket.on('togglecontador', function(msg){
-      io.in(msg.topic).emit('togglecontador', msg);
-    });
-  socket.on('count', function(msg){
-    console.log('count');
-      io.in(msg.topic).emit('count', msg);
-    });
-  socket.on('restart', function(msg) {
-      axisList = null;
-      io.in(msg.topic).emit('restart', msg);
-  });
 });
 
 http.listen(9002, function(){
