@@ -4,6 +4,7 @@ var mongodb = require('mongodb');
 const MongoClient = require('mongodb').MongoClient;
 var request = require('request');
 var path = require('path');
+const config = require('config');
 
 var cache = {maxID:"none"};
 
@@ -190,13 +191,15 @@ router.post('/rrss/post/update/:status?/:field?/:value?', function(req, res, nex
 /* GET home page. */
 router.get('/:topic', function(req, res, next) {
 	var topic = req.params.topic;
-  res.render('videowall', { topic:topic, title: 'Social-hound | Videowall',layout:'blank_layout' });
+    var socketUrl = config.get('socketUrl');
+  res.render('videowall', { topic:topic, socketUrl: socketUrl, title: 'Social-hound | Videowall',layout:'blank_layout' });
 });
 
 /* GET home page. */
 router.get('/:topic/map', function(req, res, next) {
     var topic = req.params.topic;
-  res.render('mapa3d', { topic:topic, title: 'Social-hound | Mapa',layout:'blank_layout' });
+    var socketUrl = config.get('socketUrl');
+  res.render('mapa3d', { topic:topic, socketUrl: socketUrl, title: 'Social-hound | Mapa',layout:'blank_layout' });
 });
 
 module.exports = router;
