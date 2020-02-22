@@ -234,7 +234,7 @@ function next() {
 function loadData(callback) {
   markerGroup = [];
   markerElements = [];
-  $.get('https://api.social-hound.com/'+topic+'/mentions/selected/true/hidden/false',{},function(data) {
+  $.get('https://api.social-hound.com/'+topic+'/mentions/selected/true/hidden/false/channel/map',{},function(data) {
         data.forEach(function(tweet) {
           if($(".carousel-inner").find(".carousel-item[data-id='"+tweet._id+"']").length==0) { 
               if(tweet.hasOwnProperty("geo")) {

@@ -94,7 +94,7 @@ $(function() {
 });
 
 function loadData(callback) {
-	$.get('https://api.social-hound.com/'+topic+'/mentions/selected/true/hidden/false',{},function(data) {
+	$.get('https://api.social-hound.com/'+topic+'/mentions/selected/true/hidden/false/channel/videowall',{},function(data) {
         data.forEach(function(tweet) {
         	if($(".carousel-inner").find(".carousel-item[data-id='"+tweet._id+"']").length==0) {
         	    var $tweetObj = $(`
